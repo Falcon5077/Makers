@@ -8,8 +8,10 @@ public class SceneChanger : MonoBehaviour
 {
     [SerializeField]
     public string NextSceneName = "";
-    public void ChangeNextScene(string s = "")
+    public void ChangeNextScene(string s = "")  
     {
+        // 다음 씬 이름 s를 입력하지 않으면 인스펙터창에 입력된 씬으로 이동
+        // UI Button이나 다른 스크립트에서 ChangeNextScene을 호출할 때 다음 씬 이름을 입력해주길 권장
         if(s == "")
         {
             SceneManager.LoadScene(NextSceneName);
@@ -24,6 +26,7 @@ public class SceneChanger : MonoBehaviour
 }
 
 
+// 아래코드는 에디터 인스펙터창에 버튼을 만들어 주기 위한 코드 이므로 신경쓰지 않아도 됨
 [CustomEditor(typeof(SceneChanger))]
 public class SceneChangerCusstomButton : Editor
 {

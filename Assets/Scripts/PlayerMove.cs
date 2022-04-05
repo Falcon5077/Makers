@@ -8,22 +8,26 @@ public class PlayerMove : MonoBehaviour {
     public static PlayerMove Player;
 
     // Player 이동속도
-    public float playerMoveSpeed;
+    [SerializeField] private float playerMoveSpeed;
 
-    //시간 * 스피드 움직임 값
+    //시간 * 스피드 움직임 계산
     float moveX, moveY;
     
     void Awake() {
         // 초기화 작업
-        if(Player == null)
+        if(Player == null){
             Player = this;
+        }
+            
     }
 
     void Update(){
+        //키보드 wasd 값 불러서 움직일 값 계산
         moveX = Input.GetAxis("Horizontal") * playerMoveSpeed * Time.deltaTime;
         moveY = Input.GetAxis("Vertical") * playerMoveSpeed * Time.deltaTime;
 
-        transform.position = new Vector2(moveX + transform.position.x, moveY + transform.position.y);
+        //플레이어 위치 값 재설정  
+        transform.position += new Vector3(moveX , moveY);
 
     }
 }

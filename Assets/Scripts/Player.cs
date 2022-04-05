@@ -9,9 +9,8 @@ public class Player : MonoBehaviour{
 
     // Player 이동속도
     [SerializeField] private float playerMoveSpeed;
-
-    // 시간 * 스피드 움직임 계산
-    float moveX, moveY;
+    // 시간 * 스피드 움직임 계산 x/y, hp
+    private float moveX, moveY, playerHP = 100;
 
     void playerMove(){
         // 키보드 wasd 눌리는거 확인 후 움직일 값 계산

@@ -17,12 +17,18 @@ public class Player : MonoBehaviour{
     Animator anim;
 
     private void playerMove(){
-        // 스프라이트 애니메이션 적용
-        if (Input.GetKey("d") == true){
-            anim.SetBool("isWalkRight", true);
+        // 스프라이트 좌우 반전
+        if (Input.GetButtonDown("Horizontal")){
+            heroSprite.flipX = Input.GetAxisRaw("Horizontal") == -1;
         }
-        if(Input.GetKey("d") == false) {
-            anim.SetBool("isWalkRight", false);
+
+        // 스프라이트 애니메이션 적용
+        if (Input.GetKey("d") || Input.GetKey("a"))
+        {
+            anim.SetBool("isSideWalk", true);
+        }
+        if(Input.GetKey("d") == false && Input.GetKey("a") == false) {
+            anim.SetBool("isSideWalk", false);
         }
 
 

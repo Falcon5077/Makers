@@ -16,9 +16,10 @@ public class Player : MonoBehaviour{
     // Get animation
     Animator anim;
 
-    private void playerMove(){
+    private void moveHeroSprite() {
         // 스프라이트 좌우 반전
-        if (Input.GetButtonDown("Horizontal")){
+        if (Input.GetKey("d") || Input.GetKey("a"))
+        {
             heroSprite.flipX = Input.GetAxisRaw("Horizontal") == -1;
         }
 
@@ -27,11 +28,13 @@ public class Player : MonoBehaviour{
         {
             anim.SetBool("isSideWalk", true);
         }
-        if(Input.GetKey("d") == false && Input.GetKey("a") == false) {
+        if (Input.GetKey("d") == false && Input.GetKey("a") == false)
+        {
             anim.SetBool("isSideWalk", false);
         }
+    }
 
-
+    private void playerMove(){
         // 키보드 wasd 눌리는거 확인 후 움직일 값 계산
         moveX = Input.GetAxis("Horizontal") * playerMoveSpeed * Time.deltaTime;
         moveY = Input.GetAxis("Vertical") * playerMoveSpeed * Time.deltaTime;
@@ -57,6 +60,7 @@ public class Player : MonoBehaviour{
 
     // Update is called once per frame
     void Update(){
+        moveHeroSprite()
         playerMove();
     }
     

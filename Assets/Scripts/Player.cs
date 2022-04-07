@@ -11,8 +11,27 @@ public class Player : MonoBehaviour{
     [SerializeField] private float playerMoveSpeed;
     // 시간 * 스피드 움직임 계산 x/y, hp
     private float moveX, moveY, playerHP = 100;
+    // Get sprite
+    SpriteRenderer heroSprite;
+    // Get animation
+    Animator anim;
 
-    void playerMove(){
+    private void playerMove(){
+        // 스프라이트 좌우 반전
+        if (Input.GetButtonDown("Horizontal")){
+            heroSprite.flipX = Input.GetAxisRaw("Horizontal") == -1;
+        }
+
+        // 스프라이트 애니메이션 적용
+        if (Input.GetKey("d") || Input.GetKey("a"))
+        {
+            anim.SetBool("isSideWalk", true);
+        }
+        if(Input.GetKey("d") == false && Input.GetKey("a") == false) {
+            anim.SetBool("isSideWalk", false);
+        }
+
+
         // 키보드 wasd 눌리는거 확인 후 움직일 값 계산
         moveX = Input.GetAxis("Horizontal") * playerMoveSpeed * Time.deltaTime;
         moveY = Input.GetAxis("Vertical") * playerMoveSpeed * Time.deltaTime;
@@ -27,7 +46,8 @@ public class Player : MonoBehaviour{
         if (player == null){
             player = this;
         }
-
+        heroSprite = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
     }
 
     // Start is called before the first frame update

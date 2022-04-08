@@ -13,16 +13,24 @@ public class Player : MonoBehaviour{
     // 캐릭터가 움직일 벡터
     Vector2 vector;
     // Get sprite
-    SpriteRenderer heroSprite;
+    SpriteRenderer playerSprite;
     // Get animation
     Animator anim;
+    // player HP
+    
+
+    public Vector2 playerPosition
+    {
+        get { return player.GetComponent<Rigidbody2D>().position; }
+        set { player.GetComponent<Rigidbody2D>().position = value; }
+    }
 
     // 방향 enum
     enum Direction{
         Right, Left, Up, Down
     }
 
-    // 방향 확인 함
+    // 방향 확인 함수 
     private bool checkDirectionBool(Direction dir){
         switch (dir){
             case Direction.Right:
@@ -54,11 +62,11 @@ public class Player : MonoBehaviour{
     private void moveHeroSprite() {
         // 스프라이트 좌우 반전, sideWalk로 변경 
         if (checkDirectionBool(Direction.Right)){
-            heroSprite.flipX = false;
+            playerSprite.flipX = false;
             anim.SetBool("isSideWalk", true);
         }
         if (checkDirectionBool(Direction.Left)){
-            heroSprite.flipX = true;
+            playerSprite.flipX = true;
             anim.SetBool("isSideWalk", true);
         }
 
@@ -106,7 +114,7 @@ public class Player : MonoBehaviour{
         if (player == null){
             player = this;
         }
-        heroSprite = GetComponent<SpriteRenderer>();
+        playerSprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
     }
 

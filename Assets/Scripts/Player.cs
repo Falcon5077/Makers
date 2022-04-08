@@ -17,32 +17,73 @@ public class Player : MonoBehaviour{
     // Get animation
     Animator anim;
 
+    // 방향 enum
+    enum Direction{
+        Right, Left, Up, Down
+    }
+
+    // 방향 확인 함
+    private bool checkDirectionBool(Direction dir){
+        switch (dir){
+            case Direction.Right:
+                if(Input.GetAxisRaw("Horizontal") > 0){
+                    return true;
+                }
+                return false;
+            case Direction.Left:
+                if (Input.GetAxisRaw("Horizontal") < 0){
+                    return true;
+                }
+                return false;
+
+            case Direction.Up:
+                if (Input.GetAxisRaw("Vertical") > 0){
+                    return true;
+                }
+                return false;
+            case Direction.Down:
+                if (Input.GetAxisRaw("Vertical") < 0){
+                    return true;
+                }
+                return false;
+            default:
+                return false;
+        }
+    }
+
     private void moveHeroSprite() {
         // 스프라이트 좌우 반전, sideWalk로 변경 
-        if (Input.GetKey("d") || Input.GetKey("a")){
-            heroSprite.flipX = Input.GetAxisRaw("Horizontal") == -1;
+        if (checkDirectionBool(Direction.Right)){
+            heroSprite.flipX = false;
+            anim.SetBool("isSideWalk", true);
+        }
+        if (checkDirectionBool(Direction.Left)){
+            heroSprite.flipX = true;
             anim.SetBool("isSideWalk", true);
         }
 
-        if (Input.GetKey("w")){
+        // Up 애니메이션 적용
+        if (checkDirectionBool(Direction.Up)){
             anim.SetBool("isUpWalk", true);
         }
         else{
             anim.SetBool("isUpWalk", false);
         }
 
-        if (Input.GetKey("s")){
+        // Down 애니메이션 적용  
+        if (checkDirectionBool(Direction.Down)){
             anim.SetBool("isDownWalk", true);
         }
         else{
             anim.SetBool("isDownWalk", false);
         }
-       
-        if ((Input.GetKey("d") == false && Input.GetKey("a") == false) ||
-            (Input.GetKey("d") && Input.GetKey("a"))){
+
+        // idle로 돌아가기 위해 확인 문 
+        if ((checkDirectionBool(Direction.Right) == false && checkDirectionBool(Direction.Left) == false) ||
+            (checkDirectionBool(Direction.Right) && checkDirectionBool(Direction.Left))){
             anim.SetBool("isSideWalk", false);
         }
-        if ((Input.GetKey("w") && Input.GetKey("s"))){
+        if (checkDirectionBool(Direction.Up) && checkDirectionBool(Direction.Down)){
             anim.SetBool("isUpWalk", false);
             anim.SetBool("isDownWalk", false);
         }
@@ -50,30 +91,11 @@ public class Player : MonoBehaviour{
 
     private void playerMove(){
         // 키보드 wasd 눌리는거 확인 후 움직일 값 계산
-        if (Input.GetKey("d")){
-            vector.x = 1;
-        }
-        else if(Input.GetKey("a")){
-            vector.x = -1;
-        }
-        if (Input.GetKeyUp("d") || Input.GetKeyUp("a") || (Input.GetKey("d") && Input.GetKey("a"))
-            || (Input.GetKey("d") == false && Input.GetKey("a") == false)){
-            vector.x = 0;
-        }
-
-        if (Input.GetKey("w")){
-            vector.y = 1;
-        }
-        else if (Input.GetKey("s")){
-            vector.y = -1;
-        }
-        if (Input.GetKeyUp("w") || Input.GetKeyUp("s") || (Input.GetKey("w") && Input.GetKey("s"))
-            || (Input.GetKey("w") == false && Input.GetKey("s") == false)){
-            vector.y = 0;
-        }
+        vector.x = Input.GetAxisRaw("Horizontal");
+        vector.y = Input.GetAxisRaw("Vertical");
 
 
-        // 플레이어 위치 값 재설정){
+        // 플레이어 위치 값 재설정
         player.GetComponent<Rigidbody2D>().velocity = vector * playerMoveSpeed;
 
     }

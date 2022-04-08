@@ -11,6 +11,9 @@ public class PlayerMove : MonoBehaviour
     // 조이스틱 참조
     public Joystick mJoystick;
 
+    // 조이스틱 참조
+    public Joystick mJoystick2;
+
     // Player 이동속도
     public float playerMoveSpeed;
     
@@ -30,5 +33,12 @@ public class PlayerMove : MonoBehaviour
             transform.Translate(new Vector3(mJoystick.Horizontal,mJoystick.Vertical,0) * playerMoveSpeed * Time.deltaTime);
             Debug.Log(mJoystick.Horizontal + ", " + mJoystick.Vertical);
         }
+
+        // float x = mJoystick2.Direction.y;
+        // float y = mJoystick2.Direction.x;
+
+        // float aimAngle = Mathf.Atan2(y,x) * -180 / Mathf.PI;
+        // transform.Rotate(new Vector3(0,0,aimAngle) * playerMoveSpeed * Time.deltaTime);
+        // transform.rotation = Quaternion.Euler(new Vector3(0,0,aimAngle));
     }
 }

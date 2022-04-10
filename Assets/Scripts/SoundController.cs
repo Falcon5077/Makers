@@ -26,6 +26,7 @@ public class SoundController : MonoBehaviour
         BGM_Slider[0].value = backVolume;
         EFM_Slider[0].value = effectVolume;
         Debug.Log(backVolume + "," + effectVolume);
+        transform.parent.gameObject.SetActive(false);
     }
 
     public void VolumeChange(int type)

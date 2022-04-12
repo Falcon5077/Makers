@@ -10,6 +10,9 @@ public class Player : MonoBehaviour{
 
     // Player 이동속도
     [SerializeField] float playerMoveSpeed;
+    // Player bullet 속도, 발사 텀 
+    [SerializeField] float playerBulletSpeed;
+    [SerializeField] float playerFireSpeed;
     // 캐릭터가 움직일 벡터
     Vector2 vector;
     // Get sprite
@@ -17,12 +20,17 @@ public class Player : MonoBehaviour{
     // Get animation
     Animator anim;
     // player HP
+    double hp = 150.0;
     
 
-    public Vector2 playerPosition
-    {
+    public Vector2 playerPosition{
         get { return player.GetComponent<Rigidbody2D>().position; }
         set { player.GetComponent<Rigidbody2D>().position = value; }
+    }
+
+    public double playerHP{
+        get { return hp; }
+        set { hp = value; }
     }
 
     // 방향 enum
@@ -108,6 +116,10 @@ public class Player : MonoBehaviour{
 
     }
 
+    private void bulletFire(){
+
+    }
+
 
     void Awake(){
         // 초기화 작업
@@ -127,6 +139,7 @@ public class Player : MonoBehaviour{
     void Update(){
         moveHeroSprite();
         playerMove();
+        bulletFire();
     }
     
 }

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Enemy_AI : MonoBehaviour
 {
-    Rigidbody2D rb;
-    Transform target;
+    //private Rigidbody2D rb;
+    private Transform target;
     [SerializeField]float moveSpeed;
 
     //float contactDistance = 1f; // Player 감지거리
@@ -13,7 +13,7 @@ public class Enemy_AI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        //rb = GetComponent<Rigidbody2D>();
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
     // Update is called once per frame
@@ -22,7 +22,7 @@ public class Enemy_AI : MonoBehaviour
         FollowTarget();
     }
 
-    void FollowTarget() {
+    private void FollowTarget() {
         /*
         Enemy의 Circle Collider안에 들어왔을 시 이동하는 조건으로 작동시키고 싶을 때 아래의 코드 대신 해당 코드 사용
         if(Vector2.Distance(transform.position, target.position) > contactDistance)

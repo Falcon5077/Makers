@@ -10,9 +10,6 @@ public class Player : MonoBehaviour{
 
     // Player 이동속도
     [SerializeField] float playerMoveSpeed;
-    // Player bullet 속도, 발사 텀 
-    [SerializeField] float playerBulletSpeed;
-    [SerializeField] float playerFireSpeed;
     // 캐릭터가 움직일 벡터
     Vector2 vector;
     // Get sprite
@@ -21,11 +18,21 @@ public class Player : MonoBehaviour{
     Animator anim;
     // player HP
     double hp = 150.0;
-    
+    // 발사할 총알 저장
+    public GameObject bulletPrefab;
+    // 총알 발사 여부 
+    [SerializeField] bool shoot = true;
+    // 발사 간격
+    [SerializeField] float fireTime;
+    // 발사해야할 시간
+    float shootTime;
+    // bullet position
+    public Transform bulletPoint;
+
 
     public Vector2 playerPosition{
-        get { return player.GetComponent<Rigidbody2D>().position; }
-        set { player.GetComponent<Rigidbody2D>().position = value; }
+        get { return  transform.position; }
+        set { transform.position = value; }
     }
 
     public double playerHP{
@@ -116,8 +123,20 @@ public class Player : MonoBehaviour{
 
     }
 
-    private void bulletFire(){
+    void bulletFire(){
+        if (shoot){
+            Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            // 아래 두줄은 나중에 총에 추가하시면 총이 마우스 커서 위치에 따라 360도 회전할거에요 
+            //Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            //transform.rotation = rotation;
 
+            if (shootTime <= Time.time){
+                Instantiate(bulletPrefab, bulletPoint.position, Quaternion.AngleAxis(angle - 90, Vector3.forward));
+                shootTime = Time.time + fireTime;
+            }
+        }
+        
     }
 
 
@@ -128,6 +147,8 @@ public class Player : MonoBehaviour{
         }
         playerSprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        shootTime = fireTime;
+        shoot = true;
     }
 
     // Start is called before the first frame update
@@ -140,6 +161,7 @@ public class Player : MonoBehaviour{
         moveHeroSprite();
         playerMove();
         bulletFire();
+
     }
     
 }

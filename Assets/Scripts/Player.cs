@@ -28,6 +28,15 @@ public class Player : MonoBehaviour{
     float shootTime;
     // bullet position
     public Transform bulletPoint;
+    bool my_coroutine_is_running = false;
+    HpSystem mHpSystem = new HpSystem();
+
+    // bullet power
+    [SerializeField] int bulletPower = 1;
+    public int power{
+        get { return  bulletPower; }
+        set { bulletPower = value; }
+    }
 
 
     public Vector2 playerPosition{
@@ -132,7 +141,8 @@ public class Player : MonoBehaviour{
             //transform.rotation = rotation;
 
             if (shootTime <= Time.time){
-                Instantiate(bulletPrefab, bulletPoint.position, Quaternion.AngleAxis(angle - 90, Vector3.forward));
+                GameObject b = Instantiate(bulletPrefab, bulletPoint.position, Quaternion.AngleAxis(angle - 90, Vector3.forward));
+                b.GetComponent<Bullet>().bulletPower = power;
                 shootTime = Time.time + fireTime;
             }
         }
@@ -151,11 +161,6 @@ public class Player : MonoBehaviour{
         shoot = true;
     }
 
-    // Start is called before the first frame update
-    void Start(){
-        
-    }
-
     // Update is called once per frame
     void Update(){
         moveHeroSprite();
@@ -164,4 +169,30 @@ public class Player : MonoBehaviour{
 
     }
     
+    IEnumerator HitRoutine()
+    {
+        my_coroutine_is_running = true;
+        //follow = false;
+        GetComponent<SpriteRenderer>().color = new Color(1,0,0,1);
+        yield return new WaitForSeconds(0.1f);        
+        GetComponent<SpriteRenderer>().color = new Color(1,1,1,1);
+        //follow = true;
+        my_coroutine_is_running = false;
+    }
+    
+    private void OnTriggerEnter2D(Collider2D collision) {   //Enemy의 Circle Collison내에 Player가 들어오게 되면 follow = false로 세팅
+        // if(collision.tag == "bullet")
+        // {
+        //     int p = collision.gameObject.GetComponent<Bullet>().bulletPower;
+        //     if(mHpSystem.CalcHP(-p) <= 0)
+        //     {
+        //         Destroy(this.gameObject);
+        //     }
+
+        //     if(my_coroutine_is_running)
+        //         StopCoroutine("HitRoutine");
+
+        //     StartCoroutine("HitRoutine");
+        // }
+    }
 }

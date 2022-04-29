@@ -7,12 +7,16 @@ public class Enemy_AI : MonoBehaviour
     //private Rigidbody2D rb;
     private Transform target;
     [SerializeField]float moveSpeed;
+    
+    HpSystem mHpSystem = new HpSystem();
+    bool my_coroutine_is_running = false;
 
-    //float contactDistance = 1f; // Player 감지거리
-    //bool follow = false; // Player가 Collider내에 들어왔는지 체크를 위한 bool변수 (false: 아님, true: 들어옴)
+    float contactDistance = 1.85f; // Player 감지거리
+    bool follow = true; // Player가 Collider내에 들어왔는지 체크를 위한 bool변수 (false: 아님, true: 들어옴)
     // Start is called before the first frame update
     void Start()
     {
+        follow = true;
         //rb = GetComponent<Rigidbody2D>();
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
@@ -29,16 +33,39 @@ public class Enemy_AI : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
         else rb.velocity = Vector2.zero;
         */
+        if(follow)
+            transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+    }
 
-        transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+    // 
+    IEnumerator HitRoutine()
+    {
+        my_coroutine_is_running = true;
+        //follow = false;
+        GetComponent<SpriteRenderer>().color = new Color(1,0,0,1);
+        yield return new WaitForSeconds(0.1f);        
+        GetComponent<SpriteRenderer>().color = new Color(1,1,1,1);
+        //follow = true;
+        my_coroutine_is_running = false;
     }
-    /*
-    Enemy의 Circle Collider 안에 들어왔을 시 이동하는 조건으로 작동시키고 싶을 시 해당 코드내용 사용
-    private void OnTriggerEnter2D(Collider2D collision) {   //Enemy의 Circle Collison내에 Player가 들어오게 되면 follow = true로 세팅
-        follow = true;
+
+    //Enemy의 Circle Collider 안에 들어왔을 시 이동하는 조건으로 작동시키고 싶을 시 해당 코드내용 사용
+    private void OnTriggerEnter2D(Collider2D collision) {   //Enemy의 Circle Collison내에 Player가 들어오게 되면 follow = false로 세팅
+        if(collision.tag == "bullet")
+        {
+            Debug.Log("hp : " + mHpSystem.m_HP);
+            int p = collision.gameObject.GetComponent<Bullet>().bulletPower;
+            if(mHpSystem.CalcHP(-p) <= 0)
+            {
+                Destroy(this.gameObject);
+            }
+
+            if(my_coroutine_is_running)
+                StopCoroutine("HitRoutine");
+
+            StartCoroutine("HitRoutine");
+        }
+
     }
-    private void OnTriggerExit2D(Collider2D collision) {    //Enemy의 Circle Collison내에 Player가 없을 시 follow = false
-        follow = false;
-    }
-    */
+    
 }

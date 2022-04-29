@@ -622,7 +622,7 @@ GameObject:
   - component: {fileID: 801972743}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -656,6 +656,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 3
+  power: 1
+  bulletPower: 0
 --- !u!212 &801972741
 SpriteRenderer:
   m_ObjectHideFlags: 0

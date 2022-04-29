@@ -172,27 +172,26 @@ public class Player : MonoBehaviour{
     IEnumerator HitRoutine()
     {
         my_coroutine_is_running = true;
-        //follow = false;
         GetComponent<SpriteRenderer>().color = new Color(1,0,0,1);
         yield return new WaitForSeconds(0.1f);        
         GetComponent<SpriteRenderer>().color = new Color(1,1,1,1);
-        //follow = true;
         my_coroutine_is_running = false;
     }
     
     private void OnTriggerEnter2D(Collider2D collision) {   //Enemy의 Circle Collison내에 Player가 들어오게 되면 follow = false로 세팅
-        // if(collision.tag == "bullet")
-        // {
-        //     int p = collision.gameObject.GetComponent<Bullet>().bulletPower;
-        //     if(mHpSystem.CalcHP(-p) <= 0)
-        //     {
-        //         Destroy(this.gameObject);
-        //     }
+        if(collision.tag == "monster")
+        {
+            int p = collision.gameObject.GetComponent<Enemy_AI>().power;
 
-        //     if(my_coroutine_is_running)
-        //         StopCoroutine("HitRoutine");
+            if(mHpSystem.CalcHP(-p) <= 0)
+            {
+                Debug.Log("사망");
+            }
 
-        //     StartCoroutine("HitRoutine");
-        // }
+            if(my_coroutine_is_running)
+                StopCoroutine("HitRoutine");
+
+            StartCoroutine("HitRoutine");
+        }
     }
 }

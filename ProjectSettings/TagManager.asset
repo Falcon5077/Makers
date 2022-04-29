@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - bullet
+  - monster
   layers:
   - Default
   - TransparentFX

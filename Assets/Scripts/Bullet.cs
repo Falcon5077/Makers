@@ -7,6 +7,8 @@ public class Bullet : MonoBehaviour{
     [SerializeField] float bulletLifeTime;
     // 총알 스피드
     [SerializeField] float bulletSpeed;
+    
+    public int bulletPower = 1;
 
     // 초기화 
     void Awake(){

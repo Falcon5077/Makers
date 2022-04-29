@@ -33,7 +33,7 @@ public class Distant_Enemy : MonoBehaviour
     private void FollowTarget() {
         if(Vector2.Distance(transform.position, target.position) > distance) {
             transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed*Time.deltaTime);
-        }else transform.position = Vector2.MoveTowards(transform.position, target.position, -moveSpeed*Time.deltaTime);
+        }
     }
     
     //총알 발사 코드

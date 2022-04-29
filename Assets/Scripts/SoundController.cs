@@ -25,6 +25,10 @@ public class SoundController : MonoBehaviour
         efm.volume = effectVolume;
         BGM_Slider[0].value = backVolume;
         EFM_Slider[0].value = effectVolume;
+        if(backVolume == 0)
+            BGM_Toggle.isOn = false;
+        if(effectVolume == 0)
+            EFM_Toggle.isOn = false;
         Debug.Log(backVolume + "," + effectVolume);
         transform.parent.gameObject.SetActive(false);
     }
@@ -44,7 +48,6 @@ public class SoundController : MonoBehaviour
         
         PlayerPrefs.SetFloat("BGM",backVolume);
         PlayerPrefs.SetFloat("EFM",effectVolume);
-        Debug.Log(backVolume + "," + effectVolume);
     }
 
     public void VolumeOnOff(int type)
@@ -78,7 +81,5 @@ public class SoundController : MonoBehaviour
         
         PlayerPrefs.SetFloat("BGM",backVolume);
         PlayerPrefs.SetFloat("EFM",effectVolume);
-        Debug.Log(backVolume + "," + effectVolume);
-
     }
 }

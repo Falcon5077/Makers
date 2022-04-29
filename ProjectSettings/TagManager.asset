@@ -6,6 +6,11 @@ TagManager:
   tags:
   - bullet
   - monster
+<<<<<<< Updated upstream
+=======
+  - heal
+  - enemyBullet
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX

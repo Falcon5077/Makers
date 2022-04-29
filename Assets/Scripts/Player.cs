@@ -172,9 +172,11 @@ public class Player : MonoBehaviour{
     IEnumerator HitRoutine()
     {
         my_coroutine_is_running = true;
+
         GetComponent<SpriteRenderer>().color = new Color(1,0,0,1);
         yield return new WaitForSeconds(0.1f);        
         GetComponent<SpriteRenderer>().color = new Color(1,1,1,1);
+
         my_coroutine_is_running = false;
     }
     
@@ -192,6 +194,33 @@ public class Player : MonoBehaviour{
                 StopCoroutine("HitRoutine");
 
             StartCoroutine("HitRoutine");
+<<<<<<< Updated upstream
+=======
+
+            Destroy(collision.gameObject);
+        }        
+        
+        if (collision.tag == "enemyBullet") {
+            int p = collision.gameObject.GetComponent<Bullet>().bulletPower;
+
+            if(mHpSystem.CalcHP(-p) <= 0)
+            {
+                Debug.Log("사망");
+            }
+
+            if(my_coroutine_is_running)
+                StopCoroutine("HitRoutine");
+
+            StartCoroutine("HitRoutine");
+
+            Destroy(collision.gameObject);
+        }
+
+        if (collision.tag == "heal") {
+            mHpSystem.CalcHP(10);           //HP아이템 습득 시 추가 10
+            Debug.Log("HP: " + mHpSystem.m_HP);
+            Destroy(collision.gameObject);  //아이템 삭제
+>>>>>>> Stashed changes
         }
     }
 }

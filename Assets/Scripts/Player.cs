@@ -149,7 +149,6 @@ public class Player : MonoBehaviour{
         
     }
 
-
     void Awake(){
         // 초기화 작업
         if (player == null){
@@ -192,6 +191,13 @@ public class Player : MonoBehaviour{
                 StopCoroutine("HitRoutine");
 
             StartCoroutine("HitRoutine");
+            
+        }
+
+        if (collision.tag == "heal") {
+            mHpSystem.CalcHP(10);           //HP아이템 습득 시 추가 10
+            Debug.Log("HP: " + mHpSystem.m_HP);
+            Destroy(collision.gameObject);  //아이템 삭제
         }
     }
 }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - bullet
   - monster
+  - heal
   layers:
   - Default
   - TransparentFX

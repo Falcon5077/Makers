@@ -66,6 +66,8 @@ public class Enemy_AI : MonoBehaviour
                 StopCoroutine("HitRoutine");
 
             StartCoroutine("HitRoutine");
+            
+            Destroy(collision.gameObject);
         }
 
     }

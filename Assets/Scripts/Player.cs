@@ -139,6 +139,11 @@ public class Player : MonoBehaviour{
         
     }
 
+    void OnTriggerEnter2D (Collider2D other) {
+        if (other.tag == "healing") {
+	        Debug.Log ("Player get hit Healing");
+        }
+    }
 
     void Awake(){
         // 초기화 작업
@@ -161,7 +166,6 @@ public class Player : MonoBehaviour{
         moveHeroSprite();
         playerMove();
         bulletFire();
-
     }
     
 }

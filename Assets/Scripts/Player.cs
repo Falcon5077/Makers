@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using TMPro;
 
 public class Player : MonoBehaviour{
     // static으로 선언된 player
@@ -30,7 +31,7 @@ public class Player : MonoBehaviour{
     public Transform bulletPoint;
     bool my_coroutine_is_running = false;
     HpSystem mHpSystem = new HpSystem();
-
+    public TextMeshProUGUI HPText;
     // bullet power
     [SerializeField] int bulletPower = 1;
     public int power{
@@ -154,6 +155,8 @@ public class Player : MonoBehaviour{
         if (player == null){
             player = this;
         }
+
+        SetHpUI();
         playerSprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         shootTime = fireTime;
@@ -166,6 +169,11 @@ public class Player : MonoBehaviour{
         playerMove();
         bulletFire();
 
+    }
+
+    void SetHpUI()
+    {
+        HPText.text = "HP : " + mHpSystem.m_HP.ToString();
     }
     
     IEnumerator HitRoutine()
@@ -219,5 +227,7 @@ public class Player : MonoBehaviour{
             Debug.Log("HP: " + mHpSystem.m_HP);
             Destroy(collision.gameObject);  //아이템 삭제
         }
+
+        SetHpUI();
     }
 }

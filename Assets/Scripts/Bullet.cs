@@ -8,6 +8,7 @@ public class Bullet : MonoBehaviour{
     // 총알 스피드
     [SerializeField] float bulletSpeed;
     
+    public bool isHit = false;
     public int bulletPower = 1;
 
     // 초기화 

@@ -16,6 +16,7 @@ public class Distant_Enemy : MonoBehaviour
     float shootTime;
     HpSystem mHpSystem = new HpSystem();
     bool my_coroutine_is_running = false;
+    float range;
     // 발사 간격
     [SerializeField] float fireTime;
     // 발사해야할 시간
@@ -34,8 +35,12 @@ public class Distant_Enemy : MonoBehaviour
     }
 
     private void FollowTarget() {
-        if(Vector2.Distance(transform.position, target.position) > distance) {
+        if(Vector2.Distance(transform.position, target.position) > distance + range) {
             transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed*Time.deltaTime);
+        }
+        else
+        {
+            range = Random.Range(-1.0f,1.0f);
         }
     }
     
@@ -57,16 +62,27 @@ public class Distant_Enemy : MonoBehaviour
     {
         my_coroutine_is_running = true;
         GetComponent<SpriteRenderer>().color = new Color(1,0,0,1);
+        int sort = GetComponent<SpriteRenderer>().sortingOrder;
+        GetComponent<SpriteRenderer>().sortingOrder++;
         yield return new WaitForSeconds(0.1f);        
         GetComponent<SpriteRenderer>().color = new Color(1,1,1,1);
         my_coroutine_is_running = false;
+        GetComponent<SpriteRenderer>().sortingOrder = sort;
     }
     
     //Enemy의 Circle Collider 안에 들어왔을 시 이동하는 조건으로 작동시키고 싶을 시 해당 코드내용 사용
     private void OnTriggerEnter2D(Collider2D collision) {   //Enemy의 Circle Collison내에 Player가 들어오게 되면 follow = false로 세팅
         if(collision.tag == "bullet")
         {
+            if(collision.GetComponent<Bullet>().isHit == true)
+                return;    
+            
+            collision.GetComponent<Bullet>().isHit = true;
+
+            Destroy(collision.gameObject);
+
             Debug.Log("hp : " + mHpSystem.m_HP);
+
             int p = collision.gameObject.GetComponent<Bullet>().bulletPower;
             if(mHpSystem.CalcHP(-p) <= 0)
             {
@@ -78,7 +94,6 @@ public class Distant_Enemy : MonoBehaviour
 
             StartCoroutine("HitRoutine");
             
-            Destroy(collision.gameObject);
         }
 
     }

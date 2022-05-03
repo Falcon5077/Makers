@@ -7,7 +7,7 @@ public class Puzzle : MonoBehaviour
     public float distance = 10;
     public Vector3 fisrtPosition;
     public Vector3 endPosition;
-
+    public bool isCorrect = false;
     private void Awake() {
         fisrtPosition = transform.position;
     }
@@ -24,10 +24,14 @@ public class Puzzle : MonoBehaviour
         if(Vector3.Distance(transform.position,endPosition) < 0.5f)
         {
             transform.position = endPosition;
+            isCorrect = true;
         }
         else{
             transform.position = fisrtPosition;
+            isCorrect = false;
         }
+
+        PuzzleManager.instance.CheckPuzzleClear();
             
     }
     

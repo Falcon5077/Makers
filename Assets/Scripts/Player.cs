@@ -228,6 +228,15 @@ public class Player : MonoBehaviour{
             Destroy(collision.gameObject);  //아이템 삭제
         }
 
+        if (collision.tag == "puzzle") {
+            GameObject puzzle = collision.gameObject.transform.GetChild(0).gameObject;
+            puzzle.transform.parent = null;
+            Camera.main.transform.position = new Vector3(0,0,-10);
+            puzzle.SetActive(true);
+            Time.timeScale = 0;
+            Destroy(collision.gameObject);  //아이템 삭제
+        }
+
         SetHpUI();
     }
 }

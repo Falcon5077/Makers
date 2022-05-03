@@ -183,6 +183,7 @@ MonoBehaviour:
   distance: 10
   fisrtPosition: {x: 0, y: 0, z: 0}
   endPosition: {x: 2, y: 0, z: 0}
+  isCorrect: 0
 --- !u!212 &11038196
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -311,6 +312,7 @@ MonoBehaviour:
   distance: 10
   fisrtPosition: {x: 0, y: 0, z: 0}
   endPosition: {x: 4, y: -2, z: 0}
+  isCorrect: 0
 --- !u!212 &430974488
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -783,6 +785,7 @@ MonoBehaviour:
   distance: 10
   fisrtPosition: {x: 0, y: 0, z: 0}
   endPosition: {x: 0, y: 0, z: 0}
+  isCorrect: 0
 --- !u!212 &914794684
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -911,6 +914,7 @@ MonoBehaviour:
   distance: 10
   fisrtPosition: {x: 0, y: 0, z: 0}
   endPosition: {x: 4, y: 0, z: 0}
+  isCorrect: 0
 --- !u!212 &1492392537
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1811,6 +1815,7 @@ MonoBehaviour:
   distance: 10
   fisrtPosition: {x: 0, y: 0, z: 0}
   endPosition: {x: 0, y: -2, z: 0}
+  isCorrect: 0
 --- !u!212 &1890962530
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1908,6 +1913,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e38bd85b72c7a214e90e9a0c2cca13fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  puzzle:
+  - {fileID: 914794681}
+  - {fileID: 11038193}
+  - {fileID: 1492392534}
+  - {fileID: 1890962527}
+  - {fileID: 2146026388}
+  - {fileID: 430974485}
 --- !u!4 &1895883331
 Transform:
   m_ObjectHideFlags: 0
@@ -1983,6 +1995,7 @@ MonoBehaviour:
   distance: 10
   fisrtPosition: {x: 0, y: 0, z: 0}
   endPosition: {x: 2, y: -2, z: 0}
+  isCorrect: 0
 --- !u!212 &2146026391
 SpriteRenderer:
   m_ObjectHideFlags: 0

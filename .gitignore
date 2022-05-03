@@ -9,7 +9,7 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Mm]emoryCaptures/
-
+/UserSettings/
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
 
@@ -58,3 +58,6 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+.DS_Store
+UserSettings/Layouts/CurrentMaximizeLayout.dwlt
+UserSettings/Layouts/default-2021.dwlt

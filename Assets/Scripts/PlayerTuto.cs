@@ -22,7 +22,7 @@ public class PlayerTuto : MonoBehaviour{
     // 발사할 총알 저장
     public GameObject bulletPrefab;
     // 총알 발사 여부 
-    [SerializeField] bool shoot = true;
+    public bool shoot = true;
     // 발사 간격
     [SerializeField] float fireTime;
     // 발사해야할 시간
@@ -154,11 +154,11 @@ public class PlayerTuto : MonoBehaviour{
             player = this;
         }
 
-        //SetHpUI();
+        SetHpUI();
         playerSprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         shootTime = fireTime;
-        shoot = true;
+        shoot = false;
     }
 
     // Update is called once per frame
@@ -224,5 +224,7 @@ public class PlayerTuto : MonoBehaviour{
             Debug.Log("HP: " + mHpSystem.m_HP);
             Destroy(collision.gameObject);  //아이템 삭제
         }
+
+        SetHpUI();
     }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Tutorial : MonoBehaviour
 {
@@ -52,6 +53,7 @@ public class Tutorial : MonoBehaviour
     
     IEnumerator SpawnEnemy()
     {
+        //적 3개 출력하고 플레이어가 모두 죽일때 까지 대기
         yield return new WaitForSeconds(4f);
         str.text = "Enemies are created at random locations.";
         float x = Random.Range(-10,10);
@@ -71,12 +73,23 @@ public class Tutorial : MonoBehaviour
             yield return new WaitForSeconds(1f);
         }
 
-
+        //대기 종료 후 회복아이템 표시
         str.text = "If you kill an enemy, an item is created randomly.";
         x = player.transform.position.x + 3f;
         y = player.transform.position.y + 3f;
         GameObject d = Instantiate(HealItem,new Vector3(x,y,0),Quaternion.identity);
 
+        while(d != null)
+        {
+            yield return new WaitForSeconds(2f);
+        }
+
+        str.text = "Well done! Now you can play to 1 Stage.";
+        yield return new WaitForSeconds(3f);
+        str.text = "Good Luck...";
+        yield return new WaitForSeconds(4f);
+
+        SceneManager.LoadScene("Game");
     }
 
     // Update is called once per frame

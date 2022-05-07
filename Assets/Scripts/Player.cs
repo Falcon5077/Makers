@@ -246,6 +246,7 @@ public class Player : MonoBehaviour{
         if (collision.tag == "puzzle") {
             GameObject puzzle = collision.gameObject.transform.GetChild(0).gameObject;
             puzzle.transform.parent = null;
+            puzzle.transform.position = Vector3.zero;
             Camera.main.transform.position = new Vector3(0,0,-10);
             puzzle.SetActive(true);
             Time.timeScale = 0;

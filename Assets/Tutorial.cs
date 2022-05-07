@@ -54,11 +54,21 @@ public class Tutorial : MonoBehaviour
     
     IEnumerator SpawnEnemy()
     {
+         //bullet Speed 아이템 표시
+        str.text = "When you get a bullet-shaped item, the bullet speeds up for a while.";
+        float x = player.transform.position.x + 3f;
+        float y = player.transform.position.y + 3f;
+        GameObject e = Instantiate(BulletSpItem,new Vector3(x, y, 0), Quaternion.identity);
+        while(e != null) 
+        {
+            yield return new WaitForSeconds(1f);
+        }
+
         //적 3개 출력하고 플레이어가 모두 죽일때 까지 대기
-        yield return new WaitForSeconds(4f);
+        //yield return new WaitForSeconds(4f);
         str.text = "Enemies are created at random locations.";
-        float x = Random.Range(-10,10);
-        float y = Random.Range(-10,10);
+        x = Random.Range(-10,10);
+        y = Random.Range(-10,10);
         GameObject a = Instantiate(Enemy,new Vector3(x,y,0),Quaternion.identity);
 
          x = Random.Range(-10,10);
@@ -81,15 +91,6 @@ public class Tutorial : MonoBehaviour
         GameObject d = Instantiate(HealItem,new Vector3(x,y,0),Quaternion.identity);
 
         while(d != null)    //플레이어가 회복아이템 먹을때 가지 대기.
-        {
-            yield return new WaitForSeconds(1f);
-        }
-
-        str.text = "When you get a bullet-shaped item, the bullet speeds up for a while.";
-        x = player.transform.position.x + 3f;
-        y = player.transform.position.y + 3f;
-        GameObject e = Instantiate(BulletSpItem,new Vector3(x, y, 0), Quaternion.identity);
-        while(e != null) 
         {
             yield return new WaitForSeconds(1f);
         }

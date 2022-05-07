@@ -11703,6 +11703,7 @@ MonoBehaviour:
   str: {fileID: 874233724}
   Enemy: {fileID: 3618660319428643987, guid: d8ef2f1b756c54bdf9577989cdcc9616, type: 3}
   HealItem: {fileID: 1613432257665737117, guid: 236bc1c6745c0493686e728cc0ff5113, type: 3}
+  BulletSpItem: {fileID: 55412524407249598, guid: e355dc75bcf185c4ba5c2763af738239, type: 3}
 --- !u!4 &1462294097
 Transform:
   m_ObjectHideFlags: 0

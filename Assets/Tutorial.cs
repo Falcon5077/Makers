@@ -13,6 +13,7 @@ public class Tutorial : MonoBehaviour
 
     public GameObject Enemy;
     public GameObject HealItem;
+    public GameObject BulletSpItem;
     void Awake()
     {
         player = GameObject.Find("Player");
@@ -79,9 +80,18 @@ public class Tutorial : MonoBehaviour
         y = player.transform.position.y + 3f;
         GameObject d = Instantiate(HealItem,new Vector3(x,y,0),Quaternion.identity);
 
-        while(d != null)
+        while(d != null)    //플레이어가 회복아이템 먹을때 가지 대기.
         {
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
+        }
+
+        str.text = "When you get a bullet-shaped item, the bullet speeds up for a while.";
+        x = player.transform.position.x + 3f;
+        y = player.transform.position.y + 3f;
+        GameObject e = Instantiate(BulletSpItem,new Vector3(x, y, 0), Quaternion.identity);
+        while(e != null) 
+        {
+            yield return new WaitForSeconds(1f);
         }
 
         str.text = "Well done! Now you can play to 1 Stage.";

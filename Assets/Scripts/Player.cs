@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
+//using System;
 using TMPro;
 
 public class Player : MonoBehaviour{
@@ -21,6 +21,7 @@ public class Player : MonoBehaviour{
     double hp = 150.0;
     // 발사할 총알 저장
     public GameObject bulletPrefab;
+    public GameObject BulletSpeedItem;
     // 총알 발사 여부 
     [SerializeField] bool shoot = true;
     // 발사 간격
@@ -32,6 +33,8 @@ public class Player : MonoBehaviour{
     bool my_coroutine_is_running = false;
     HpSystem mHpSystem = new HpSystem();
     public TextMeshProUGUI HPText;
+    bool isSpeed = false;
+    int bulletCount = 0;
     // bullet power
     [SerializeField] int bulletPower = 1;
     public int power{
@@ -145,6 +148,18 @@ public class Player : MonoBehaviour{
                 GameObject b = Instantiate(bulletPrefab, bulletPoint.position, Quaternion.AngleAxis(angle - 90, Vector3.forward));
                 b.GetComponent<Bullet>().bulletPower = power;
                 shootTime = Time.time + fireTime;
+                //추가된내용
+                if(isSpeed) {
+                    bulletCount++;
+                    if(bulletCount > 30) {      //총알 속도 아이템 효과 상실 후
+                        fireTime = 0.5f;
+                        isSpeed = false;
+                        bulletCount = 0;
+                        float x = player.transform.position.x + 3f;
+                        float y = player.transform.position.y + 3f;
+                        Instantiate(BulletSpeedItem,new Vector3(x, y, 0), Quaternion.identity); //총알속도 아이템 다시 띄움
+                    }
+                }
             }
         }
         
@@ -235,6 +250,14 @@ public class Player : MonoBehaviour{
             puzzle.SetActive(true);
             Time.timeScale = 0;
             Destroy(collision.gameObject);  //아이템 삭제
+        }
+
+        //추가된 내용
+        if (collision.tag == "BulletSpeedItem")
+        {
+            fireTime = 0.1f;
+            isSpeed = true;
+            Destroy(collision.gameObject);
         }
 
         SetHpUI();

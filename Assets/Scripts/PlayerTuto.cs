@@ -32,6 +32,9 @@ public class PlayerTuto : MonoBehaviour{
     bool my_coroutine_is_running = false;
     HpSystem mHpSystem = new HpSystem();
     public TextMeshProUGUI HPText;
+    //총알 속도 아이템부분
+    bool isSpeed = false;
+    int bulletCount = 0;
     // bullet power
     [SerializeField] int bulletPower = 1;
     public int power{
@@ -144,6 +147,14 @@ public class PlayerTuto : MonoBehaviour{
                 GameObject b = Instantiate(bulletPrefab, bulletPoint.position, Quaternion.AngleAxis(angle - 90, Vector3.forward));
                 b.GetComponent<Bullet>().bulletPower = power;
                 shootTime = Time.time + fireTime;
+                if(isSpeed) {
+                    bulletCount++;
+                    if(bulletCount > 30) {
+                        fireTime = 0.5f;
+                        isSpeed = false;
+                        bulletCount = 0;                    
+                    }
+                }
             }
         }
     }
@@ -223,6 +234,13 @@ public class PlayerTuto : MonoBehaviour{
             mHpSystem.CalcHP(10);           //HP아이템 습득 시 추가 10
             Debug.Log("HP: " + mHpSystem.m_HP);
             Destroy(collision.gameObject);  //아이템 삭제
+        }
+
+        if (collision.tag == "BulletSpeedItem")
+        {
+            fireTime = 0.1f;
+            isSpeed = true;
+            Destroy(collision.gameObject);
         }
 
         SetHpUI();

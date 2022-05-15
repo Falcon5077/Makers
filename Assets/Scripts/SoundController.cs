@@ -39,11 +39,19 @@ public class SoundController : MonoBehaviour
         {
             bgm.volume = BGM_Slider[0].value;
             backVolume = BGM_Slider[0].value;
+            if(bgm.volume == 0)
+                BGM_Toggle.isOn = false;
+            else
+                BGM_Toggle.isOn = true;
         }
         if(type == AudioType_EFM)
         {
             efm.volume = EFM_Slider[0].value;
             effectVolume = EFM_Slider[0].value;
+            if(efm.volume == 0)
+                EFM_Toggle.isOn = false;
+            else
+                EFM_Toggle.isOn = true;
         }
         
         PlayerPrefs.SetFloat("BGM",backVolume);

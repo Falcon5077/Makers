@@ -149,7 +149,7 @@ public class PlayerTuto : MonoBehaviour{
                 shootTime = Time.time + fireTime;
                 if(isSpeed) {
                     bulletCount++;
-                    if(bulletCount > 30) {
+                    if(bulletCount > 30) {  //총알 30발 발사할동안 fireTime을 줄여서 빠르게 발사한다.
                         fireTime = 0.5f;
                         isSpeed = false;
                         bulletCount = 0;                    

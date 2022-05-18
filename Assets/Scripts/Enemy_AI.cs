@@ -11,7 +11,7 @@ public class Enemy_AI : MonoBehaviour
     HpSystem mHpSystem = new HpSystem();
     bool my_coroutine_is_running = false;
 
-    float contactDistance = 1.85f; // Player 감지거리
+    //float contactDistance = 1.85f; // Player 감지거리 (현재 사용중이 아니라 주석처리함)
     bool follow = true; // Player가 Collider내에 들어왔는지 체크를 위한 bool변수 (false: 아님, true: 들어옴)
     public int power = 1;
     public int bulletPower = 0;

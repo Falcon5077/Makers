@@ -25,6 +25,7 @@ public class PuzzleManager : MonoBehaviour
 
         Debug.Log("Clear");
         Time.timeScale = 1;
+        Player.player.canMove = true;
         gameObject.SetActive(false);
     }
 

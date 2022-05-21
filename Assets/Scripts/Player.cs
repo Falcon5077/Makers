@@ -7,7 +7,7 @@ using TMPro;
 public class Player : MonoBehaviour{
     // static으로 선언된 player
     // player는 단 하나이므로 플레이어가 필요할 경우는 get, set을 이용해서 참조할 것  
-    private static Player player;
+    public static Player player;
 
     // Player 이동속도
     [SerializeField] float playerMoveSpeed;
@@ -32,6 +32,7 @@ public class Player : MonoBehaviour{
     bool my_coroutine_is_running = false;
     HpSystem mHpSystem = new HpSystem();
     public TextMeshProUGUI HPText;
+    public bool canMove = true;
     // bullet power
     [SerializeField] int bulletPower = 1;
     public int power{
@@ -165,6 +166,9 @@ public class Player : MonoBehaviour{
 
     // Update is called once per frame
     void Update(){
+        if(!canMove)
+            return;
+
         moveHeroSprite();
         playerMove();
         bulletFire();
@@ -224,17 +228,11 @@ public class Player : MonoBehaviour{
 
         if (collision.tag == "heal") {
             mHpSystem.CalcHP(10);           //HP아이템 습득 시 추가 10
-            Debug.Log("HP: " + mHpSystem.m_HP);
             Destroy(collision.gameObject);  //아이템 삭제
         }
 
         if (collision.tag == "puzzle") {
-            GameObject puzzle = collision.gameObject.transform.GetChild(0).gameObject;
-            puzzle.transform.parent = null;
-            Camera.main.transform.position = new Vector3(0,0,-10);
-            puzzle.SetActive(true);
-            Time.timeScale = 0;
-            Destroy(collision.gameObject);  //아이템 삭제
+            Item.item.puzzleItem(this,collision.gameObject);
         }
 
         SetHpUI();

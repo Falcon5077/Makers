@@ -32,7 +32,6 @@ public class Puzzle : MonoBehaviour
         }
 
         PuzzleManager.instance.CheckPuzzleClear();
-            
     }
     
 }

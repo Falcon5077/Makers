@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HpSystem
 {
-    public int m_HP = 10;
+    public int m_HP = 5;
 
     public int CalcHP(int hp)
     {

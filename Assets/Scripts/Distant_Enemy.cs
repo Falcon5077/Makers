@@ -14,7 +14,7 @@ public class Distant_Enemy : MonoBehaviour
     public GameObject bulletPrefab;
     public int bulletPower;
     float shootTime;
-    HpSystem mHpSystem = new HpSystem();
+    public HpSystem mHpSystem = new HpSystem();
     bool my_coroutine_is_running = false;
     float range;
     // 발사 간격
@@ -69,6 +69,43 @@ public class Distant_Enemy : MonoBehaviour
         my_coroutine_is_running = false;
         GetComponent<SpriteRenderer>().sortingOrder = sort;
     }
+
+    IEnumerator ScaleSmall()
+    {
+        for(int i = 100; i > 0; i--){
+            transform.localScale = new Vector3(0.0025f * i,0.0025f * i,0.0025f * i);
+            yield return new WaitForSecondsRealtime(0.02f);
+        }
+    }
+
+    IEnumerator BossExplosion()
+    {
+        for(int j = 0; j < 5; j++){
+            for(int i = 0; i < 10; i++){
+                GameObject bullet = Instantiate(bulletPrefab,transform.position,Quaternion.identity);
+                bullet.GetComponent<Bullet>().bulletPower = 0;
+                bullet.transform.rotation = Quaternion.Euler(new Vector3(0,0,(36*i) + (20 * j)));
+            }
+            yield return new WaitForSecondsRealtime(0.2f);
+        }
+    }
+
+    IEnumerator DeathRoutine()
+    {
+        if(transform.tag == "Boss")
+        {
+            GetComponent<SpriteRenderer>().color = new Color(0.5f,0.5f,0.5f,0.5f);
+            StartCoroutine("ScaleSmall");
+            StartCoroutine("BossExplosion");
+            Time.timeScale = 0.5f;
+            yield return new WaitForSecondsRealtime(2f);
+            Time.timeScale = 1f;
+        }        
+        
+        yield return new WaitForSecondsRealtime(0.01f);
+
+        Destroy(this.gameObject);
+    }
     
     //Enemy의 Circle Collider 안에 들어왔을 시 이동하는 조건으로 작동시키고 싶을 시 해당 코드내용 사용
     private void OnTriggerEnter2D(Collider2D collision) {   //Enemy의 Circle Collison내에 Player가 들어오게 되면 follow = false로 세팅
@@ -84,17 +121,19 @@ public class Distant_Enemy : MonoBehaviour
             Debug.Log("hp : " + mHpSystem.m_HP);
 
             int p = collision.gameObject.GetComponent<Bullet>().bulletPower;
-            if(mHpSystem.CalcHP(-p) <= 0)
+            if(mHpSystem.CalcHP(-p) == 0) // 버그 날 수도 있음 ==을 <=로
             {
-                Destroy(this.gameObject);
+                StartCoroutine("DeathRoutine");
             }
 
             if(my_coroutine_is_running)
                 StopCoroutine("HitRoutine");
 
-            StartCoroutine("HitRoutine");
+            if(mHpSystem.m_HP >= 0)
+                StartCoroutine("HitRoutine");
             
         }
 
     }
 }
+

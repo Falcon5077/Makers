@@ -35,6 +35,11 @@ public class Player : MonoBehaviour{
     public TextMeshProUGUI HPText;
     bool isSpeed = false;
     int bulletCount = 0;
+
+    public List<GameObject> HP_List;
+    public GameObject HP_point;
+    public Transform HP_Head;
+
     // bullet power
     [SerializeField] int bulletPower = 1;
     public int power{
@@ -188,7 +193,16 @@ public class Player : MonoBehaviour{
 
     void SetHpUI()
     {
-        HPText.text = "HP : " + mHpSystem.m_HP.ToString();
+        for(int i = 0; i < HP_List.Count; i++)
+        {
+            Destroy(HP_List[i]);
+        }
+
+        for(int i = 0; i < mHpSystem.m_HP; i++)
+        {
+            HP_List.Add(Instantiate(HP_point,HP_Head));
+        }
+        
     }
     
     IEnumerator HitRoutine()
@@ -238,7 +252,7 @@ public class Player : MonoBehaviour{
         }
 
         if (collision.tag == "heal") {
-            mHpSystem.CalcHP(10);           //HP아이템 습득 시 추가 10
+            mHpSystem.CalcHP(5);           //HP아이템 습득 시 추가 5
             Debug.Log("HP: " + mHpSystem.m_HP);
             Destroy(collision.gameObject);  //아이템 삭제
         }

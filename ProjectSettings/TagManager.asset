@@ -11,6 +11,7 @@ TagManager:
   - puzzle
   - BulletSpeedItem
   - wall
+  - Boss
   layers:
   - Default
   - TransparentFX

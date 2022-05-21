@@ -9,6 +9,8 @@ TagManager:
   - heal
   - enemyBullet
   - puzzle
+  - BulletSpeedItem
+  - wall
   layers:
   - Default
   - TransparentFX

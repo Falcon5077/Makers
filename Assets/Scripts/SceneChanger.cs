@@ -25,7 +25,7 @@ public class SceneChanger : MonoBehaviour
     }
 }
 
-
+/*
 // 아래코드는 에디터 인스펙터창에 버튼을 만들어 주기 위한 코드 이므로 신경쓰지 않아도 됨
 [CustomEditor(typeof(SceneChanger))]
 public class SceneChangerCusstomButton : Editor
@@ -49,4 +49,6 @@ public class SceneChangerCusstomButton : Editor
         GUILayout.FlexibleSpace();  // 고정된 여백을 넣습니다.
         EditorGUILayout.EndHorizontal();  // 가로 생성 끝
     }
+
 }
+*/

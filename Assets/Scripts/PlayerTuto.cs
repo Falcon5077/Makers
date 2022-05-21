@@ -1,15 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using System;
+using System;
 using TMPro;
 
-public class Player : MonoBehaviour{
+public class PlayerTuto : MonoBehaviour{
     // static으로 선언된 player
     // player는 단 하나이므로 플레이어가 필요할 경우는 get, set을 이용해서 참조할 것  
-    private static Player player;
+    private static PlayerTuto player;
 
-    // Player 이동속도
+    // PlayerTuto 이동속도
     [SerializeField] float playerMoveSpeed;
     // 캐릭터가 움직일 벡터
     Vector2 vector;
@@ -21,9 +21,8 @@ public class Player : MonoBehaviour{
     double hp = 150.0;
     // 발사할 총알 저장
     public GameObject bulletPrefab;
-    public GameObject BulletSpeedItem;
     // 총알 발사 여부 
-    [SerializeField] bool shoot = true;
+    public bool shoot = true;
     // 발사 간격
     [SerializeField] float fireTime;
     // 발사해야할 시간
@@ -33,6 +32,7 @@ public class Player : MonoBehaviour{
     bool my_coroutine_is_running = false;
     HpSystem mHpSystem = new HpSystem();
     public TextMeshProUGUI HPText;
+    //총알 속도 아이템부분
     bool isSpeed = false;
     int bulletCount = 0;
     // bullet power
@@ -133,7 +133,6 @@ public class Player : MonoBehaviour{
 
         // 플레이어 위치 값 재설정
         player.GetComponent<Rigidbody2D>().velocity = vector * playerMoveSpeed;
-
     }
 
     void bulletFire(){
@@ -148,21 +147,16 @@ public class Player : MonoBehaviour{
                 GameObject b = Instantiate(bulletPrefab, bulletPoint.position, Quaternion.AngleAxis(angle - 90, Vector3.forward));
                 b.GetComponent<Bullet>().bulletPower = power;
                 shootTime = Time.time + fireTime;
-                //추가된내용
                 if(isSpeed) {
                     bulletCount++;
-                    if(bulletCount > 30) {      //총알 속도 아이템 효과 상실 후
+                    if(bulletCount > 30) {  //총알 30발 발사할동안 fireTime을 줄여서 빠르게 발사한다.
                         fireTime = 0.5f;
                         isSpeed = false;
-                        bulletCount = 0;
-                        float x = player.transform.position.x + 3f;
-                        float y = player.transform.position.y + 3f;
-                        Instantiate(BulletSpeedItem,new Vector3(x, y, 0), Quaternion.identity); //총알속도 아이템 다시 띄움
+                        bulletCount = 0;                    
                     }
                 }
             }
         }
-        
     }
 
     void Awake(){
@@ -175,7 +169,7 @@ public class Player : MonoBehaviour{
         playerSprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         shootTime = fireTime;
-        shoot = true;
+        shoot = false;
     }
 
     // Update is called once per frame
@@ -183,7 +177,6 @@ public class Player : MonoBehaviour{
         moveHeroSprite();
         playerMove();
         bulletFire();
-
     }
 
     void SetHpUI()
@@ -243,17 +236,6 @@ public class Player : MonoBehaviour{
             Destroy(collision.gameObject);  //아이템 삭제
         }
 
-        if (collision.tag == "puzzle") {
-            GameObject puzzle = collision.gameObject.transform.GetChild(0).gameObject;
-            puzzle.transform.parent = null;
-            puzzle.transform.position = Vector3.zero;
-            Camera.main.transform.position = new Vector3(0,0,-10);
-            puzzle.SetActive(true);
-            Time.timeScale = 0;
-            Destroy(collision.gameObject);  //아이템 삭제
-        }
-
-        //추가된 내용
         if (collision.tag == "BulletSpeedItem")
         {
             fireTime = 0.1f;

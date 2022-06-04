@@ -522,6 +522,8 @@ MonoBehaviour:
   mTime: 0
   str: {fileID: 1762637013}
   Enemy: {fileID: 3618660319428643987, guid: d8ef2f1b756c54bdf9577989cdcc9616, type: 3}
+  HealItem: {fileID: 0}
+  BulletSpItem: {fileID: 0}
 --- !u!4 &509438393
 Transform:
   m_ObjectHideFlags: 0

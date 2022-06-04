@@ -67,6 +67,8 @@ public class Enemy_AI : MonoBehaviour
             int p = collision.gameObject.GetComponent<Bullet>().bulletPower;
             if(mHpSystem.CalcHP(-p) <= 0)
             {
+                if(GameManager.instance != null)
+                    GameManager.instance.killEnemyCount++;
                 Destroy(this.gameObject);
             }
 

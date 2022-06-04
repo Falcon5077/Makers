@@ -240,7 +240,6 @@ public class Player : MonoBehaviour{
             if(mHpSystem.CalcHP(-p) <= 0)
             {
                 Debug.Log("사망");
-                Debug.Log("사망");
             }
 
             if(my_coroutine_is_running)
@@ -258,7 +257,7 @@ public class Player : MonoBehaviour{
         }
 
         if (collision.tag == "puzzle") {
-            GameObject puzzle = collision.gameObject.transform.GetChild(0).gameObject;
+            GameObject puzzle = collision.gameObject.transform.GetChild(0).GetChild(0).gameObject;
             puzzle.transform.parent = null;
             puzzle.transform.position = Vector3.zero;
             Camera.main.transform.position = new Vector3(0,0,-10);

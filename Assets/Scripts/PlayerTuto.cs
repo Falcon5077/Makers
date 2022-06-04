@@ -231,7 +231,7 @@ public class PlayerTuto : MonoBehaviour{
         }
 
         if (collision.tag == "heal") {
-            mHpSystem.CalcHP(10);           //HP아이템 습득 시 추가 10
+            mHpSystem.CalcHP(5);           //HP아이템 습득 시 추가 10
             Debug.Log("HP: " + mHpSystem.m_HP);
             Destroy(collision.gameObject);  //아이템 삭제
         }

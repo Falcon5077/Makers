@@ -25,7 +25,7 @@ public class PuzzleManager : MonoBehaviour
         }
 
         Debug.Log("Clear");
-        EnemySpawner.instance.SpawnBoss();
+        //EnemySpawner.instance.SpawnBoss();
         Time.timeScale = 1;
         gameObject.SetActive(false);
         //SceneManager.LoadScene("Game 2");   //퍼즐 맞으면 Game 2 씬으로 전환 / 퍼즐이 더 필요하면 해당 퍼즐 종료후 넘어가도록 수정하세요

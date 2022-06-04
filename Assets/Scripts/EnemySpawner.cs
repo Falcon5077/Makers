@@ -30,6 +30,12 @@ public class EnemySpawner : MonoBehaviour
 
         Invoke("SpawnEnemy",Random.Range(1.5f,3f));
     }
+
+    public void StopSpawnEnemy()
+    {
+        CancelInvoke("SpawnEnemy");
+        Debug.Log("몬스터 스폰 중지");
+    }
     
     public void SpawnBoss()
     {
@@ -38,5 +44,6 @@ public class EnemySpawner : MonoBehaviour
         int MonsterType = Random.Range(0,2);
         GameObject boss = Instantiate(Boss,new Vector3(x,y,0),Quaternion.identity);
         boss.GetComponent<Distant_Enemy>().mHpSystem.m_HP = 50;
+        StopSpawnEnemy();
     }
 }

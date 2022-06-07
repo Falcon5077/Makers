@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3618660319428643989}
   - component: {fileID: 3618660319428643990}
-  - component: {fileID: 3618660319428643984}
+  - component: {fileID: -8805049276342652502}
   - component: {fileID: 3618660319428643986}
   - component: {fileID: 3618660319428643988}
   - component: {fileID: 1481039848}
@@ -88,7 +88,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3618660319428643984
+--- !u!114 &-8805049276342652502
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -97,12 +97,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3618660319428643987}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9cb8ff63fffce949bc52f84193dc73f, type: 3}
+  m_Script: {fileID: 11500000, guid: 2e9d4a45e144645338892b45e9e856af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 3
   power: 1
-  bulletPower: 0
+  distance: 0
 --- !u!70 &3618660319428643986
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

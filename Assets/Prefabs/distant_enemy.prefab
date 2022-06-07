@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 984879557036798550}
   - component: {fileID: 6779662339541845554}
   - component: {fileID: 984879557036798547}
-  - component: {fileID: 984879557036798546}
+  - component: {fileID: 8204631981695035888}
   - component: {fileID: 984879557036798557}
   - component: {fileID: 8153699967091713755}
   m_Layer: 0
@@ -105,7 +105,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 3.5, y: 3.5}
   m_Direction: 0
---- !u!114 &984879557036798546
+--- !u!114 &8204631981695035888
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -114,17 +114,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 984879557036798548}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29853cc953527d44ab30172edfa0295c, type: 3}
+  m_Script: {fileID: 11500000, guid: 79baa2a214ec7477085106604022e26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 5
-  distanceOut: 8
   moveSpeed: 3
-  shoot: 1
+  power: 1
+  distance: 5
+  Range: 3
   bulletPoint: {fileID: 984879557687121017}
   bulletPrefab: {fileID: 408851073443398935, guid: 403b00548b3c15144b1d47c004d10984, type: 3}
-  animRenderer: {fileID: 0}
   bulletPower: 1
+  shootTime: 0
   fireTime: 1
 --- !u!50 &984879557036798557
 Rigidbody2D:

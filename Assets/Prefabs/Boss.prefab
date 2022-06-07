@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8047906687519715149}
   - component: {fileID: 8047906687519715150}
-  - component: {fileID: 1381807080364261884}
+  - component: {fileID: 2854333564116027618}
   - component: {fileID: 2630594742303920901}
   - component: {fileID: -8230947971700050713}
   m_Layer: 0
@@ -87,7 +87,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1381807080364261884
+--- !u!114 &2854333564116027618
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,16 +96,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 8047906687519715144}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29853cc953527d44ab30172edfa0295c, type: 3}
+  m_Script: {fileID: 11500000, guid: d494a0fff1c70f94587125d7b01d0a76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 10
-  distanceOut: 15
   moveSpeed: 3
-  shoot: 1
+  power: 1
+  distance: 10
+  Range: 5
   bulletPoint: {fileID: 8047906687519715149}
   bulletPrefab: {fileID: 408851073443398935, guid: 403b00548b3c15144b1d47c004d10984, type: 3}
   bulletPower: 1
+  shootTime: 0
   fireTime: 0.7
 --- !u!58 &2630594742303920901
 CircleCollider2D:

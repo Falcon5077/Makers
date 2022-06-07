@@ -23,7 +23,7 @@ public class Player : MonoBehaviour{
     public GameObject bulletPrefab;
     public GameObject BulletSpeedItem;
     // 총알 발사 여부 
-    [SerializeField] bool shoot = true;
+    public bool shoot = true;
     // 발사 간격
     [SerializeField] float fireTime;
     // 발사해야할 시간
@@ -202,7 +202,6 @@ public class Player : MonoBehaviour{
         {
             HP_List.Add(Instantiate(HP_point,HP_Head));
         }
-        
     }
     
     IEnumerator HitRoutine()
@@ -219,7 +218,7 @@ public class Player : MonoBehaviour{
     private void OnTriggerEnter2D(Collider2D collision) {   //Enemy의 Circle Collison내에 Player가 들어오게 되면 follow = false로 세팅
         if(collision.tag == "monster")
         {
-            int p = collision.gameObject.GetComponent<Enemy_AI>().power;
+            int p = collision.gameObject.GetComponent<Monster>().power;
 
             if(mHpSystem.CalcHP(-p) <= 0)
             {

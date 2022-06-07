@@ -300,8 +300,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 964520a77e98dee43b27772528e9a156, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 10
-  fisrtPosition: {x: 0, y: 0, z: 0}
+  zPosition: 10
+  firstPosition: {x: 0, y: 0, z: 0}
   endPosition: {x: 0, y: -2, z: 0}
   isCorrect: 0
 --- !u!212 &78268270
@@ -483,7 +483,7 @@ Transform:
   m_Children:
   - {fileID: 1478951568}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &184539868
 MonoBehaviour:
@@ -1066,8 +1066,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 964520a77e98dee43b27772528e9a156, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 10
-  fisrtPosition: {x: 0, y: 0, z: 0}
+  zPosition: 10
+  firstPosition: {x: 0, y: 0, z: 0}
   endPosition: {x: 2, y: -2, z: 0}
   isCorrect: 0
 --- !u!212 &399911634
@@ -1451,8 +1451,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 964520a77e98dee43b27772528e9a156, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 10
-  fisrtPosition: {x: 0, y: 0, z: 0}
+  zPosition: 10
+  firstPosition: {x: 0, y: 0, z: 0}
   endPosition: {x: 4, y: 0, z: 0}
   isCorrect: 0
 --- !u!212 &882936263
@@ -2234,8 +2234,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 964520a77e98dee43b27772528e9a156, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 10
-  fisrtPosition: {x: 0, y: 0, z: 0}
+  zPosition: 10
+  firstPosition: {x: 0, y: 0, z: 0}
   endPosition: {x: 4, y: -2, z: 0}
   isCorrect: 0
 --- !u!212 &1372714950
@@ -2876,8 +2876,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 964520a77e98dee43b27772528e9a156, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 10
-  fisrtPosition: {x: 0, y: 0, z: 0}
+  zPosition: 10
+  firstPosition: {x: 0, y: 0, z: 0}
   endPosition: {x: 2, y: 0, z: 0}
   isCorrect: 0
 --- !u!212 &1712881738
@@ -3005,8 +3005,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 964520a77e98dee43b27772528e9a156, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 10
-  fisrtPosition: {x: 0, y: 0, z: 0}
+  zPosition: 10
+  firstPosition: {x: 0, y: 0, z: 0}
   endPosition: {x: 0, y: 0, z: 0}
   isCorrect: 1
 --- !u!212 &1990728754
@@ -3183,7 +3183,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1613432257665737114, guid: 236bc1c6745c0493686e728cc0ff5113, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1613432257665737114, guid: 236bc1c6745c0493686e728cc0ff5113, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3286,7 +3286,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3962202799209080241, guid: e355dc75bcf185c4ba5c2763af738239, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3962202799209080241, guid: e355dc75bcf185c4ba5c2763af738239, type: 3}
       propertyPath: m_LocalPosition.x

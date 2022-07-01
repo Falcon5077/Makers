@@ -8,17 +8,23 @@ public class Tutorial : MonoBehaviour
 {
     public bool isMove;
     public float mTime;
-    private GameObject player;
+    public GameObject player;
     public TextMeshProUGUI str;
 
     public GameObject Enemy;
     public GameObject HealItem;
     public GameObject BulletSpItem;
+
     void Awake()
     {
         player = GameObject.Find("Player");
     }
 
+    private void Start() 
+    {
+        //EnemySpawner.instance.StartStage();
+        //FadeInOut.instance.StartProd();
+    }
     
     void CheckMove()
     {
@@ -106,7 +112,7 @@ public class Tutorial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckMove();
+        //CheckMove();
         Debug.Log(mTime);
     }
 }

@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletLifeTime: 3
   bulletSpeed: 10
+  isHit: 0
   bulletPower: 1
 --- !u!212 &5250258102514553158
 SpriteRenderer:
@@ -89,7 +90,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0.35315683, g: 0.8490566, b: 0.20425417, a: 1}
   m_FlipX: 0

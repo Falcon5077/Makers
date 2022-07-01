@@ -1,10 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-<<<<<<< HEAD
-=======
 using UnityEngine.SceneManagement;
->>>>>>> Boss
 
 public class RangeMonster : Monster
 {
@@ -24,10 +21,6 @@ public class RangeMonster : Monster
     // Start is called before the first frame update
     void Start()
     {
-<<<<<<< HEAD
-        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        m_localScale = transform.localScale;
-=======
         Scene scene = SceneManager.GetActiveScene();
         if(scene.name == "Fade")
         {
@@ -42,7 +35,6 @@ public class RangeMonster : Monster
     public void StartLate()
     {
         GetComponent<chatData>().ChatStart();
->>>>>>> Boss
     }
 
     // Update is called once per frame

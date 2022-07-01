@@ -4,16 +4,8 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour{
     // 총알 살아있는 시간 
-<<<<<<< Updated upstream:Assets/Scripts/Bullet.cs
-    [SerializeField] float bulletLifeTime;
-<<<<<<< HEAD:Assets/Scripts/A_Complete/Bullet.cs
-
-=======
-=======
     [SerializeField] public float bulletLifeTime;
 
->>>>>>> Stashed changes:Assets/Scripts/A_Complete/Bullet.cs
->>>>>>> Boss:Assets/Scripts/Bullet.cs
     // 총알 스피드
     [SerializeField] public float bulletSpeed;
     

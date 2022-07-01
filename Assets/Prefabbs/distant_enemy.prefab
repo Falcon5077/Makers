@@ -29,7 +29,11 @@ Transform:
   m_GameObject: {fileID: 984879557036798548}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.52, y: -0.55, z: 0}
+<<<<<<< Updated upstream:Assets/Prefabbs/distant_enemy.prefab
   m_LocalScale: {x: 0.4, y: 0.4, z: 0}
+=======
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0}
+>>>>>>> Stashed changes:Assets/Prefabs/distant_enemy.prefab
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 984879557687121017}
@@ -102,7 +106,11 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
+<<<<<<< Updated upstream:Assets/Prefabbs/distant_enemy.prefab
   m_Size: {x: 5, y: 5}
+=======
+  m_Size: {x: 3, y: 3}
+>>>>>>> Stashed changes:Assets/Prefabs/distant_enemy.prefab
   m_Direction: 0
 --- !u!114 &984879557036798546
 MonoBehaviour:
@@ -118,7 +126,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distance: 7
   moveSpeed: 3
+<<<<<<< Updated upstream:Assets/Prefabbs/distant_enemy.prefab
   shoot: 1
+=======
+  power: 1
+  distance: 5
+  startHP: 5
+  Range: 3
+>>>>>>> Stashed changes:Assets/Prefabs/distant_enemy.prefab
   bulletPoint: {fileID: 984879557687121017}
   bulletPrefab: {fileID: 408851073443398935, guid: 403b00548b3c15144b1d47c004d10984, type: 3}
   bulletPower: 1

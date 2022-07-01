@@ -9,13 +9,31 @@ public class Monster : MonoBehaviour
     public HpSystem mHpSystem = new HpSystem();
     protected bool my_coroutine_is_running = false;
     public int power = 1;
+<<<<<<< HEAD:Assets/Scripts/A_Complete/Monster.cs
     [SerializeField]protected float distance = 0;
     protected Vector3 m_localScale;
+=======
+<<<<<<< Updated upstream:Assets/Scripts/Enemy_AI.cs
+    public int bulletPower = 0;
+=======
+    [SerializeField]protected float distance = 0;
+    protected Vector3 m_localScale;
+    public int startHP = 50;
+>>>>>>> Stashed changes:Assets/Scripts/A_Complete/Monster.cs
+>>>>>>> Boss:Assets/Scripts/Enemy_AI.cs
     // Start is called before the first frame update
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+<<<<<<< HEAD:Assets/Scripts/A_Complete/Monster.cs
         m_localScale = transform.localScale;
+=======
+<<<<<<< Updated upstream:Assets/Scripts/Enemy_AI.cs
+=======
+        m_localScale = transform.localScale;
+        mHpSystem.m_HP = startHP;
+>>>>>>> Stashed changes:Assets/Scripts/A_Complete/Monster.cs
+>>>>>>> Boss:Assets/Scripts/Enemy_AI.cs
     }
     // Update is called once per frame
     void Update()
@@ -23,6 +41,20 @@ public class Monster : MonoBehaviour
         FollowTarget();
     }
 
+<<<<<<< HEAD:Assets/Scripts/A_Complete/Monster.cs
+=======
+<<<<<<< Updated upstream:Assets/Scripts/Enemy_AI.cs
+    private void FollowTarget() {
+        /*
+        Enemy의 Circle Collider안에 들어왔을 시 이동하는 조건으로 작동시키고 싶을 때 아래의 코드 대신 해당 코드 사용
+        if(Vector2.Distance(transform.position, target.position) > contactDistance)
+            transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+        else rb.velocity = Vector2.zero;
+        */
+        if(follow){
+            transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+=======
+>>>>>>> Boss:Assets/Scripts/Enemy_AI.cs
     protected void FollowTarget() {
         if(target.transform.position.x > transform.position.x)
         {
@@ -35,6 +67,17 @@ public class Monster : MonoBehaviour
 
         if(Vector2.Distance(transform.position, target.position) > distance) {
             transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed*Time.deltaTime);
+<<<<<<< HEAD:Assets/Scripts/A_Complete/Monster.cs
+=======
+            //if(GetComponent<Animator>() != null)
+            //    GetComponent<Animator>().speed = 1;
+        }
+        else
+        {
+            //if (GetComponent<Animator>() != null)
+            //    GetComponent<Animator>().speed = 0;
+>>>>>>> Stashed changes:Assets/Scripts/A_Complete/Monster.cs
+>>>>>>> Boss:Assets/Scripts/Enemy_AI.cs
         }
     }
 

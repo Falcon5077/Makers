@@ -180,13 +180,23 @@ public class Player : MonoBehaviour{
         playerSprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         shootTime = fireTime;
-        shoot = true;
+        //shoot = true; 시작하자마자 발사 하지 않음
     }
 
     // Update is called once per frame
     void Update(){
-        moveHeroSprite();
-        playerMove();
+        if(chatData.isChat == false){
+            moveHeroSprite();
+            playerMove();
+        }
+        else
+        {
+            vector.x = 0;
+            vector.y = 0;
+            player.GetComponent<Rigidbody2D>().velocity = vector * playerMoveSpeed;
+            anim.SetBool("isUpWalk", false);
+            anim.SetBool("isDownWalk", false);
+        }
         bulletFire();
 
     }
@@ -271,6 +281,19 @@ public class Player : MonoBehaviour{
             fireTime = 0.1f;
             isSpeed = true;
             Destroy(collision.gameObject);
+        }
+
+        //추가된 내용
+        if (collision.tag == "ShootStart")
+        {
+            shoot = true;
+            Destroy(collision.gameObject);
+        }
+
+        //추가된 내용
+        if (collision.tag == "NextScene")
+        {
+            collision.GetComponent<SceneChanger>().ChangeNextScene();
         }
 
         SetHpUI();

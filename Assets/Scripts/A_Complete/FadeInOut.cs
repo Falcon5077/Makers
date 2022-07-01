@@ -21,10 +21,26 @@ public struct FromTo
 }
 public class FadeInOut : MonoBehaviour
 {
+<<<<<<< HEAD
+=======
+    public FadeInOut instance;
+>>>>>>> Boss
     public RectTransform TopPannel;
     public RectTransform DownPannel;
     public GameObject BlurPannel;
     public bool isBlur = false;
+<<<<<<< HEAD
+=======
+    public chatData[] chatData_instance;
+
+    void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+    }
+>>>>>>> Boss
 
     // from, to, speed, TopPannel 정보를 FromTo에 저장하여 코루틴 실행
 
@@ -48,7 +64,11 @@ public class FadeInOut : MonoBehaviour
         Debug.Log("MoveEnd");
     }
 
+<<<<<<< HEAD
     IEnumerator BlurFadeIn()
+=======
+    IEnumerator BlurFadeIn(float T)
+>>>>>>> Boss
     {
         // 시간을 멈추고 isBlur를 true로
         Time.timeScale = 0;
@@ -59,28 +79,46 @@ public class FadeInOut : MonoBehaviour
             if(i == 4)
             {   
                 // 탑판넬과 바텀판넬을 이동 시킴
+<<<<<<< HEAD
                 FromTo TopPannelWay = new FromTo(TopPannel.anchoredPosition,new Vector3(0,0,0),1f,TopPannel);
                 FromTo BottomPannelWay = new FromTo(DownPannel.anchoredPosition,new Vector3(0,540,0),1f,DownPannel);
+=======
+                FromTo TopPannelWay = new FromTo(TopPannel.anchoredPosition,new Vector3(0,0,0),T,TopPannel);
+                FromTo BottomPannelWay = new FromTo(DownPannel.anchoredPosition,new Vector3(0,540,0),T,DownPannel);
+>>>>>>> Boss
                 StartCoroutine("MoveFromTo",TopPannelWay);
                 StartCoroutine("MoveFromTo",BottomPannelWay);   
             }
             // 셰이더 블러 값을 i를 통해 증가
             BlurPannel.GetComponent<Image>().material.SetInt("_Radius",i);
+<<<<<<< HEAD
             yield return new WaitForSecondsRealtime(0.1f);
+=======
+            yield return new WaitForSecondsRealtime(0.1f/T);
+>>>>>>> Boss
         }
 
         // 블러처리가 끝났으니 isBlur를 false로
         isBlur = false;
     }
 
+<<<<<<< HEAD
     IEnumerator BlurFadeOut()
+=======
+    IEnumerator BlurFadeOut(float T)
+>>>>>>> Boss
     {
         // isBlur를 true로
         isBlur = true;
 
         //탑판넬과 바텀판넬을 이동 시킴
+<<<<<<< HEAD
         FromTo TopPannelWay = new FromTo(TopPannel.anchoredPosition,new Vector3(0,540,0),1f,TopPannel);
         FromTo BottomPannelWay = new FromTo(DownPannel.anchoredPosition,new Vector3(0,0,0),1f,DownPannel);
+=======
+        FromTo TopPannelWay = new FromTo(TopPannel.anchoredPosition,new Vector3(0,540,0),T,TopPannel);
+        FromTo BottomPannelWay = new FromTo(DownPannel.anchoredPosition,new Vector3(0,0,0),T,DownPannel);
+>>>>>>> Boss
         StartCoroutine("MoveFromTo",TopPannelWay);
         StartCoroutine("MoveFromTo",BottomPannelWay);
         
@@ -88,7 +126,11 @@ public class FadeInOut : MonoBehaviour
         {
             // 셰이더 블러 값을 i를 통해 증가
             BlurPannel.GetComponent<Image>().material.SetInt("_Radius",i);
+<<<<<<< HEAD
             yield return new WaitForSecondsRealtime(0.1f);
+=======
+            yield return new WaitForSecondsRealtime(0.1f / T);
+>>>>>>> Boss
         }
 
         // 블러처리가 끝났으니 isBlur를 false로, timeScale을 1로
@@ -103,15 +145,55 @@ public class FadeInOut : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.I))
         {
             if(!isBlur)
+<<<<<<< HEAD
                 StartCoroutine("BlurFadeIn");
+=======
+                StartCoroutine("BlurFadeIn",4);
+>>>>>>> Boss
             else Debug.Log("Already Working");
         }
 
         if(Input.GetKeyDown(KeyCode.O))
         {
             if(!isBlur)
+<<<<<<< HEAD
                 StartCoroutine("BlurFadeOut");
             else Debug.Log("Already Working");
         }
+=======
+                StartCoroutine("BlurFadeOut",4);
+            else Debug.Log("Already Working");
+        }
+
+        if(Input.GetKeyDown(KeyCode.Z))
+        {
+            StartCoroutine("Production");
+            StartCoroutine("Production");
+        }
+    }
+
+    public void StartProd()
+    {
+
+    }
+
+    int count = 0;
+
+    IEnumerator Production()
+    {
+        StartCoroutine("BlurFadeIn", 1.5f);
+        yield return new WaitForSecondsRealtime(2f);
+        StartCoroutine("BlurFadeOut", 1.5f);
+        yield return new WaitForSecondsRealtime(1f);
+        StartCoroutine("BlurFadeIn", 4);
+        yield return new WaitForSecondsRealtime(1f);
+        StartCoroutine("BlurFadeOut", 4);
+        yield return new WaitForSecondsRealtime(1f);
+
+        if(count++ % 2 == 1){
+            Debug.Log(chatData.index);
+            chatData_instance[chatData.index++].ChatStart();
+        }
+>>>>>>> Boss
     }
 }

@@ -25,6 +25,11 @@ public class ChatManager : MonoBehaviour
     // 현재 쓰고 있는지 체크하는 변수
     public bool isWriting = false;
 
+<<<<<<< HEAD
+=======
+    public chatData lastChatData;
+
+>>>>>>> Boss
     // 임시 저장 문자열
     string subText = null;
 
@@ -87,7 +92,12 @@ public class ChatManager : MonoBehaviour
         contentsNum++;
         if(chatContents.Length == contentsNum){
             chatText.text = "";
+<<<<<<< HEAD
             this.gameObject.SetActive(false);       
+=======
+            this.gameObject.SetActive(false);   
+            lastChatData.EndChat();
+>>>>>>> Boss
         }
         else 
         {

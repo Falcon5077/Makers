@@ -102,7 +102,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 3
   power: 1
+<<<<<<< HEAD:Assets/Prefabs/Enemy.prefab
   distance: 0
+=======
+<<<<<<< Updated upstream:Assets/Prefabbs/Enemy.prefab
+  bulletPower: 0
+=======
+  distance: 0
+  startHP: 5
+>>>>>>> Stashed changes:Assets/Prefabs/Enemy.prefab
+>>>>>>> Boss:Assets/Prefabbs/Enemy.prefab
 --- !u!70 &3618660319428643986
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

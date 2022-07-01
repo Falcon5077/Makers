@@ -47,7 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletLifeTime: 3
-  bulletSpeed: 15
+  bulletSpeed: 10
+  isHit: 0
   bulletPower: 1
 --- !u!212 &5250258102514553158
 SpriteRenderer:

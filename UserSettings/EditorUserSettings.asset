@@ -6,7 +6,12 @@ EditorUserSettings:
   serializedVersion: 4
   m_ConfigSettings:
     RecentlyUsedSceneGuid-0:
+<<<<<<< HEAD
       value: 5206005406025e020c5f0e7449270b44134f1d292e2976317b2b4b61e3e6366b
+=======
+<<<<<<< Updated upstream
+      value: 0609060206545e0b0f0b5e70452509444f154a2b7f7120337d281f61b6b8653b
+>>>>>>> Boss
       flags: 0
     RecentlyUsedSceneGuid-1:
       value: 010007515d0c5b5a095b0975422209444f4e1d7a75797663742d4963b3e5646a
@@ -30,7 +35,38 @@ EditorUserSettings:
       value: 5450010201075a0b5908552612740944434e4f79787d7134747f4e36e1e1363a
       flags: 0
     RecentlyUsedSceneGuid-8:
+<<<<<<< HEAD
       value: 5007005e55530b09085c5a7343770a49124e1b7d2a7873327c7d4466b3b9636e
+=======
+      value: 5000560756075c5a545f5b2316715e44144f4d297a7877647c2f4960bab23169
+=======
+      value: 5007005e55530b09085c5a7343770a49124e1b7d2a7873327c7d4466b3b9636e
+      flags: 0
+    RecentlyUsedSceneGuid-1:
+      value: 5a540c0557530f085e0b542446250a4412154a2f757823607f7b1962b6e36c3b
+      flags: 0
+    RecentlyUsedSceneGuid-2:
+      value: 5450010201075a0b5908552612740944434e4f79787d7134747f4e36e1e1363a
+      flags: 0
+    RecentlyUsedSceneGuid-3:
+      value: 010007515d0c5b5a095b0975422209444f4e1d7a75797663742d4963b3e5646a
+      flags: 0
+    RecentlyUsedSceneGuid-4:
+      value: 5206005406025e020c5f0e7449270b44134f1d292e2976317b2b4b61e3e6366b
+      flags: 0
+    RecentlyUsedSceneGuid-5:
+      value: 065257005453585954595471462008441716487f752b24647b7d1c64e0b5673c
+      flags: 0
+    RecentlyUsedSceneGuid-6:
+      value: 0208525000570f5e5e5f0e7147770a1514154d7f7c2b7f642e7e496ae6b93039
+      flags: 0
+    RecentlyUsedSceneGuid-7:
+      value: 515250075c0c595e5f5a5e71122159444e4e4a2f7a7d7f602f284d66b4b76661
+      flags: 0
+    RecentlyUsedSceneGuid-8:
+      value: 0657065700040f5a0959082313220f44464e417e287c7f68742f196abae3653e
+>>>>>>> Stashed changes
+>>>>>>> Boss
       flags: 0
     RecentlyUsedSceneGuid-9:
       value: 5b52525106510a5909595e7546775e464416407f742c22322f7a1f61b4b4363e

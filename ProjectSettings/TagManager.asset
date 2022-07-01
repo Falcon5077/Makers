@@ -12,6 +12,8 @@ TagManager:
   - BulletSpeedItem
   - wall
   - Boss
+  - ShootStart
+  - NextScene
   layers:
   - Default
   - TransparentFX

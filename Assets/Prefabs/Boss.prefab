@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2854333564116027618}
   - component: {fileID: 2630594742303920901}
   - component: {fileID: -8230947971700050713}
+  - component: {fileID: 5010618487533419103}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Boss
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 8047906687519715144}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.63, y: 2.38, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.3}
+  m_LocalScale: {x: 2, y: 2, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -76,12 +77,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a42415bf80d759740851bce4b0bb7c73, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 089361f7724094b8d9aa2f338704bfb7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 10, y: 10}
+  m_Size: {x: 1.28, y: 1.65}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -99,15 +100,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d494a0fff1c70f94587125d7b01d0a76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD:Assets/Prefabs/Boss.prefab
   moveSpeed: 3
   power: 1
   distance: 10
   Range: 5
+=======
+<<<<<<< Updated upstream:Assets/Prefabbs/Boss.prefab
+  distance: 10
+  moveSpeed: 3
+  shoot: 1
+=======
+  moveSpeed: 3
+  power: 1
+  distance: 6
+  startHP: 25
+  Range: 5
+>>>>>>> Stashed changes:Assets/Prefabs/Boss.prefab
+>>>>>>> Boss:Assets/Prefabbs/Boss.prefab
   bulletPoint: {fileID: 8047906687519715149}
   bulletPrefab: {fileID: 408851073443398935, guid: 403b00548b3c15144b1d47c004d10984, type: 3}
   bulletPower: 1
   shootTime: 0
   fireTime: 0.7
+  Bomber_Mob: {fileID: 3618660319428643987, guid: d298e53ab68245c41bae5968915edf7e, type: 3}
 --- !u!58 &2630594742303920901
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -123,7 +139,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 5
+  m_Radius: 0.5
 --- !u!50 &-8230947971700050713
 Rigidbody2D:
   serializedVersion: 4
@@ -145,3 +161,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &5010618487533419103
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8047906687519715144}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b8167ab160bcb418dbc566ce921bd3e3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

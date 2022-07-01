@@ -4,33 +4,21 @@ using UnityEngine;
 
 public class BossMonster : RangeMonster
 {
-<<<<<<< HEAD
-
-    protected bool death_is_running = false;
-=======
     protected bool death_is_running = false;
     protected int bullet_Shooting_Count = 0;
     public GameObject Bomber_Mob;
->>>>>>> Boss
     // Start is called before the first frame update
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         m_localScale = transform.localScale;
-<<<<<<< HEAD
-=======
         mHpSystem.m_HP = startHP;
->>>>>>> Boss
     }
 
     // Update is called once per frame
     void Update()
     {
         if(!death_is_running)
-<<<<<<< HEAD
-            FollowTarget();
-    } 
-=======
         {
             FollowTarget();
             RandomFire();
@@ -112,7 +100,6 @@ public class BossMonster : RangeMonster
             bullet.GetComponent<Bullet>().bulletPower = bulletPower;
         }
     }
->>>>>>> Boss
        
     IEnumerator ScaleSmall()
     {
@@ -127,11 +114,7 @@ public class BossMonster : RangeMonster
         for(int j = 0; j < 5; j++){
             for(int i = 0; i < 10; i++){
                 GameObject bullet = Instantiate(bulletPrefab,transform.position,Quaternion.identity);
-<<<<<<< HEAD
-                bullet.GetComponent<Bullet>().bulletPower = 0;
-=======
                 bullet.GetComponent<Bullet>().bulletSpeed = 5;
->>>>>>> Boss
                 bullet.transform.rotation = Quaternion.Euler(new Vector3(0,0,(36*i) + (20 * j)));
             }
             yield return new WaitForSecondsRealtime(0.3f);
@@ -157,11 +140,7 @@ public class BossMonster : RangeMonster
         GetComponent<SpriteRenderer>().color = new Color(0.5f,0.5f,0.5f,0.5f);
         StartCoroutine("ScaleSmall");
         StartCoroutine("BossExplosion");
-<<<<<<< HEAD
-        Time.timeScale = 0.5f;
-=======
         //Time.timeScale = 0.5f;
->>>>>>> Boss
     }
     
     override public void OnTriggerEnter2D(Collider2D collision) {   //Enemy의 Circle Collison내에 Player가 들어오게 되면 follow = false로 세팅

@@ -14,24 +14,17 @@ public class Enemy_AI : MonoBehaviour
     //float contactDistance = 1.85f; // Player 감지거리 (현재 사용중이 아니라 주석처리함)
     bool follow = true; // Player가 Collider내에 들어왔는지 체크를 위한 bool변수 (false: 아님, true: 들어옴)
     public int power = 1;
-<<<<<<< Updated upstream:Assets/Scripts/Enemy_AI.cs
-    public int bulletPower = 0;
-=======
     [SerializeField]protected float distance = 0;
     protected Vector3 m_localScale;
     public int startHP = 50;
->>>>>>> Stashed changes:Assets/Scripts/A_Complete/Monster.cs
     // Start is called before the first frame update
     void Start()
     {
         follow = true;
         //rb = GetComponent<Rigidbody2D>();
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-<<<<<<< Updated upstream:Assets/Scripts/Enemy_AI.cs
-=======
         m_localScale = transform.localScale;
         mHpSystem.m_HP = startHP;
->>>>>>> Stashed changes:Assets/Scripts/A_Complete/Monster.cs
     }
     // Update is called once per frame
     void Update()
@@ -39,17 +32,6 @@ public class Enemy_AI : MonoBehaviour
         FollowTarget();
     }
 
-<<<<<<< Updated upstream:Assets/Scripts/Enemy_AI.cs
-    private void FollowTarget() {
-        /*
-        Enemy의 Circle Collider안에 들어왔을 시 이동하는 조건으로 작동시키고 싶을 때 아래의 코드 대신 해당 코드 사용
-        if(Vector2.Distance(transform.position, target.position) > contactDistance)
-            transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
-        else rb.velocity = Vector2.zero;
-        */
-        if(follow){
-            transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
-=======
     protected void FollowTarget() {
         if(target.transform.position.x > transform.position.x)
         {
@@ -69,7 +51,6 @@ public class Enemy_AI : MonoBehaviour
         {
             //if (GetComponent<Animator>() != null)
             //    GetComponent<Animator>().speed = 0;
->>>>>>> Stashed changes:Assets/Scripts/A_Complete/Monster.cs
         }
     }
 

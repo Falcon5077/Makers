@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 // RectTransform 이동을 위한 좌표(from, to)와 속도 speed 를 구조체로 만듬
 public struct FromTo
@@ -10,7 +11,6 @@ public struct FromTo
     public Vector3 to;
     public float speed;
     public RectTransform tra;
-
     public FromTo(Vector3 from,Vector3 to,float speed,RectTransform tra)
     {
         this.from = from;
@@ -21,12 +21,13 @@ public struct FromTo
 }
 public class FadeInOut : MonoBehaviour
 {
-    public FadeInOut instance;
+    public static FadeInOut instance;
     public RectTransform TopPannel;
     public RectTransform DownPannel;
     public GameObject BlurPannel;
     public bool isBlur = false;
     public chatData[] chatData_instance;
+    public bool isEnd = false;
 
     void Awake()
     {
@@ -34,6 +35,19 @@ public class FadeInOut : MonoBehaviour
         {
             instance = this;
         }
+
+        Scene scene = SceneManager.GetActiveScene();
+        if(scene.name == "Fade")
+        {
+            StartCoroutine("BlurFadeOut",1.5f);
+
+            Invoke("Temp",1f);
+        }
+    }
+
+    public void Temp()
+    {
+        StartCoroutine("Production");
     }
 
     // from, to, speed, TopPannel 정보를 FromTo에 저장하여 코루틴 실행
@@ -81,6 +95,12 @@ public class FadeInOut : MonoBehaviour
 
         // 블러처리가 끝났으니 isBlur를 false로
         isBlur = false;
+
+        if(isEnd == true)
+        {
+            GameObject sc = GameObject.Find("SceneChanger");
+            sc.GetComponent<SceneChanger>().ChangeNextScene("Main");
+        }
     }
 
     IEnumerator BlurFadeOut(float T)
@@ -104,8 +124,17 @@ public class FadeInOut : MonoBehaviour
         // 블러처리가 끝났으니 isBlur를 false로, timeScale을 1로
         isBlur = false;
 
-
         Time.timeScale = 1;
+    }
+
+    public void GameEnd()
+    {
+        if(!isBlur)
+            StartCoroutine("BlurFadeIn",4);
+        else Debug.Log("Already Working");
+
+        chatData.index = 0;
+        isEnd = true;
     }
     // Update is called once per frame
     void Update()
@@ -133,25 +162,34 @@ public class FadeInOut : MonoBehaviour
 
     public void StartProd()
     {
-
+        StartCoroutine("StartGame");
     }
 
     int count = 0;
 
+    IEnumerator StartGame()
+    {
+        GameObject sc = GameObject.Find("SceneChanger");
+        StartCoroutine("BlurFadeIn", 1.5f);
+        yield return new WaitForSecondsRealtime(1f);
+
+        sc.GetComponent<SceneChanger>().ChangeNextScene("Fade");
+
+    }
+
     IEnumerator Production()
     {
-        StartCoroutine("BlurFadeIn", 1.5f);
+        /*StartCoroutine("BlurFadeIn", 1.5f);
         yield return new WaitForSecondsRealtime(2f);
         StartCoroutine("BlurFadeOut", 1.5f);
         yield return new WaitForSecondsRealtime(1f);
+        */
         StartCoroutine("BlurFadeIn", 4);
         yield return new WaitForSecondsRealtime(1f);
         StartCoroutine("BlurFadeOut", 4);
         yield return new WaitForSecondsRealtime(1f);
 
-        if(count++ % 2 == 1){
-            Debug.Log(chatData.index);
-            chatData_instance[chatData.index++].ChatStart();
-        }
+        Debug.Log(chatData.index);
+        chatData_instance[chatData.index++].ChatStart();
     }
 }

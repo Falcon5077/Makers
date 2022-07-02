@@ -244,7 +244,7 @@ MonoBehaviour:
   - {fileID: 984879557036798548, guid: b9220900ad3f6d14d89d87179fb70ec7, type: 3}
   - {fileID: 984879557036798548, guid: 534cde956c16e584f99fdeb67e01648d, type: 3}
   - {fileID: 984879557036798548, guid: d1d2f77cf10a4a6439af03225c180094, type: 3}
-  Boss: {fileID: 8047906687519715144, guid: 36afb0cf2c02b4b4694c159a6313b813, type: 3}
+  Boss: {fileID: 8047906687519715144, guid: ece01fcce6100cd4c9260db01efb4055, type: 3}
 --- !u!1 &47153737
 GameObject:
   m_ObjectHideFlags: 0
@@ -1037,12 +1037,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 778d6aaf159444948adf6f99a1a7949f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instance: {fileID: 0}
   TopPannel: {fileID: 179663310}
   DownPannel: {fileID: 1042672767}
   BlurPannel: {fileID: 1539758088}
   isBlur: 0
   chatData_instance: []
+  isEnd: 1
 --- !u!1 &310790409
 GameObject:
   m_ObjectHideFlags: 0
@@ -1445,7 +1445,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -2
+  m_SortingOrder: -3
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0.5, y: 0.5, z: 0}
   m_MaxChunkCount: 16
@@ -8934,7 +8934,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4e150ea6ce2441088b2123fdbf51b48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  killEnemyCount: 19
+  killEnemyCount: 15
 --- !u!4 &2060039301
 Transform:
   m_ObjectHideFlags: 0
@@ -9040,7 +9040,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -2
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0.5, y: 0.5, z: 0}
   m_MaxChunkCount: 16

@@ -23,9 +23,14 @@ public class SceneChanger : MonoBehaviour
             Debug.Log("Success Change Scene : " + s);
         }
     }
+
+    private void Start() {
+        // 다른 씬에서 사용될 수 있게 DontDestroy
+        DontDestroyOnLoad(this.gameObject);
+    }
 }
 
-
+/*
 // 아래코드는 에디터 인스펙터창에 버튼을 만들어 주기 위한 코드 이므로 신경쓰지 않아도 됨
 [CustomEditor(typeof(SceneChanger))]
 public class SceneChangerCusstomButton : Editor
@@ -51,3 +56,5 @@ public class SceneChangerCusstomButton : Editor
     }
 
 }
+
+*/

@@ -233,6 +233,7 @@ public class Player : MonoBehaviour{
             if(mHpSystem.CalcHP(-p) <= 0)
             {
                 Debug.Log("사망");
+                FadeInOut.instance.GameEnd();
             }
 
             if(my_coroutine_is_running)
@@ -249,6 +250,7 @@ public class Player : MonoBehaviour{
             if(mHpSystem.CalcHP(-p) <= 0)
             {
                 Debug.Log("사망");
+                FadeInOut.instance.GameEnd();
             }
 
             if(my_coroutine_is_running)

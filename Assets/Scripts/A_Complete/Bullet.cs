@@ -20,11 +20,6 @@ public class Bullet : MonoBehaviour{
 
     }
 
-    void OnBecameInvisible()
-    {
-        Destroy(this.gameObject);
-    }
-
     // Start is called before the first frame update
     void Start(){
         // 발사로부터 LifeTime 후 삭제

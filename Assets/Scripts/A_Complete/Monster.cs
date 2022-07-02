@@ -16,9 +16,7 @@ public class Monster : MonoBehaviour
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-
         m_localScale = transform.localScale;
-        mHpSystem.m_HP = startHP;
     }
     // Update is called once per frame
     void Update()
@@ -38,13 +36,6 @@ public class Monster : MonoBehaviour
 
         if(Vector2.Distance(transform.position, target.position) > distance) {
             transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed*Time.deltaTime);
-            //if(GetComponent<Animator>() != null)
-            //    GetComponent<Animator>().speed = 1;
-        }
-        else
-        {
-            //if (GetComponent<Animator>() != null)
-            //    GetComponent<Animator>().speed = 0;
         }
     }
 

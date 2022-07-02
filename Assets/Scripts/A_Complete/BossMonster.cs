@@ -7,12 +7,14 @@ public class BossMonster : RangeMonster
     protected bool death_is_running = false;
     protected int bullet_Shooting_Count = 0;
     public GameObject Bomber_Mob;
+    public GameObject Wall;
     // Start is called before the first frame update
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         m_localScale = transform.localScale;
         mHpSystem.m_HP = startHP;
+        Wall = GameObject.Find("Wall");
     }
 
     // Update is called once per frame
@@ -128,6 +130,8 @@ public class BossMonster : RangeMonster
         puzzle.transform.position = Vector3.zero;
         Camera.main.transform.position = new Vector3(0,0,-10);
         puzzle.SetActive(true);
+        
+        Wall.SetActive(false);
 
         Destroy(this.gameObject);
     }

@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 1952370982837771339}
   - component: {fileID: 1952370982837771338}
   - component: {fileID: 1952370982837771341}
-  - component: {fileID: 1952370982837771336}
   - component: {fileID: 8399714129164846809}
+  - component: {fileID: 6827572157788150247}
   m_Layer: 0
   m_Name: NextScene
   m_TagString: NextScene
@@ -72,29 +72,16 @@ BoxCollider2D:
   m_Offset: {x: 0.23681402, y: -1.369767}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 40, y: 22.5}
+    newSize: {x: 1.6, y: 1.44}
+    adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 13.11657, y: 3.739534}
   m_EdgeRadius: 0
---- !u!114 &1952370982837771336
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1952370982837771340}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fca71c55c9969411bbc3d113b215a280, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NextSceneName: Game 1
 --- !u!114 &8399714129164846809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,6 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 558766f6739ee4e91b82f599203e6507, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chatStart: 0
   names:
   - ???
   - "\uC8FC\uC778\uACF5"
@@ -114,3 +102,16 @@ MonoBehaviour:
   - "0\uD06C\uC544\uC544\uC544\uC545.."
   - "1\uC800 \uB140\uC11D\uC774 \uB098\uD0C0\uB09C \uACF3\uC73C\uB85C \uAC00\uBCF4\uC790..!"
   endRoutine: 
+--- !u!114 &6827572157788150247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1952370982837771340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f73a0229ce6d0140b120d64e59f3652, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NextName: Game 1

@@ -30,6 +30,8 @@ public class SoundController : MonoBehaviour
         // 배경음악과 효과음에 대해 저장된 정보 읽어오기
         backVolume = PlayerPrefs.GetFloat("BGM",1);
         effectVolume = PlayerPrefs.GetFloat("EFM",1);
+        
+        SoundPlayer.EFM_value = effectVolume;
 
         bgm.volume = backVolume;
         efm.volume = effectVolume;
@@ -68,6 +70,8 @@ public class SoundController : MonoBehaviour
                 EFM_Toggle.isOn = false;
             else
                 EFM_Toggle.isOn = true;
+
+            SoundPlayer.EFM_value = effectVolume;
         }
         
         PlayerPrefs.SetFloat("BGM",backVolume);

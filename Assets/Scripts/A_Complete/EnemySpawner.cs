@@ -11,16 +11,15 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("SpawnEnemy",1f);
+        //Invoke("SpawnEnemy",1f);
         
         if(instance == null)
         {
             instance = this;
         }
-        
     }
 
-    void SpawnEnemy()
+    public void SpawnEnemy()
     {
         // 랜덤좌표에 적 생성
         float x = Random.Range(-10,10);

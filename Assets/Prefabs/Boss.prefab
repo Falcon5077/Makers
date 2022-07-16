@@ -102,12 +102,15 @@ MonoBehaviour:
   moveSpeed: 3
   power: 1
   distance: 10
+  startHP: 50
   Range: 5
   bulletPoint: {fileID: 8047906687519715149}
   bulletPrefab: {fileID: 408851073443398935, guid: 403b00548b3c15144b1d47c004d10984, type: 3}
   bulletPower: 1
   shootTime: 0
   fireTime: 0.7
+  Bomber_Mob: {fileID: 0}
+  Wall: {fileID: 0}
 --- !u!58 &2630594742303920901
 CircleCollider2D:
   m_ObjectHideFlags: 0

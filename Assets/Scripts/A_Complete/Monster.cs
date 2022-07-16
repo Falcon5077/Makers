@@ -9,12 +9,15 @@ public class Monster : MonoBehaviour
     public HpSystem mHpSystem = new HpSystem();
     protected bool my_coroutine_is_running = false;
     public int power = 1;
-    [SerializeField]protected float distance = 0;
+    [SerializeField]public float distance = 0;
     protected Vector3 m_localScale;
-    public int startHP = 50;
+    public int startHP;
     // Start is called before the first frame update
     void Start()
     {
+        if(GetComponent<AudioSource>() != null) 
+            GetComponent<AudioSource>().volume = SoundPlayer.EFM_value;
+        mHpSystem.m_HP = startHP;
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         m_localScale = transform.localScale;
     }
@@ -60,6 +63,9 @@ public class Monster : MonoBehaviour
         {
             if(collision.GetComponent<Bullet>().isHit == true)
                 return;
+
+            if(GetComponent<AudioSource>() != null)
+                GetComponent<AudioSource>().Play();
 
             collision.GetComponent<Bullet>().isHit = true;
             Destroy(collision.gameObject);

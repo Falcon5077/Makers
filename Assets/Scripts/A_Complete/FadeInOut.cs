@@ -43,6 +43,10 @@ public class FadeInOut : MonoBehaviour
 
             Invoke("Temp",1f);
         }
+        if(scene.name == "Main")
+        {
+            StartCoroutine("BlurFadeOut",1.5f);
+        }
     }
 
     public void Temp()
@@ -76,6 +80,7 @@ public class FadeInOut : MonoBehaviour
     {
         // 시간을 멈추고 isBlur를 true로
         Time.timeScale = 0;
+        Cursor.lockState = CursorLockMode.Locked;
         isBlur = true;
 
         for(int i = 1; i <= 10; i++)
@@ -123,7 +128,7 @@ public class FadeInOut : MonoBehaviour
 
         // 블러처리가 끝났으니 isBlur를 false로, timeScale을 1로
         isBlur = false;
-
+        Cursor.lockState = CursorLockMode.None;
         Time.timeScale = 1;
     }
 

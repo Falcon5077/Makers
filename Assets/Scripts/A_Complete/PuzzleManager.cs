@@ -7,6 +7,9 @@ public class PuzzleManager : MonoBehaviour
 {
     public static PuzzleManager instance;
     public GameObject[] puzzle;
+    public GameObject Wall;
+    public GameObject NextScene;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +17,7 @@ public class PuzzleManager : MonoBehaviour
         {
             instance = this;
         }
+        Wall = GameObject.Find("Wall");
     }
 
     public void CheckPuzzleClear()
@@ -31,8 +35,12 @@ public class PuzzleManager : MonoBehaviour
         gameObject.SetActive(false);
 
         // 퍼즐 클리어 후 동작
-
+        Wall.SetActive(true);
+        GameObject temp = Instantiate(NextScene);
+        temp.GetComponent<chatData>().ChatStart();
         
+        GameObject temp2 = GameObject.Find("Player");
+        temp2.GetComponent<Player>().shoot = false;
         //SceneManager.LoadScene("Game 2");   //퍼즐 맞으면 Game 2 씬으로 전환 / 퍼즐이 더 필요하면 해당 퍼즐 종료후 넘어가도록 수정하세요
     }
 

@@ -5,9 +5,14 @@ using UnityEngine;
 public class SoundPlayer : MonoBehaviour
 {
     private AudioSource mAudioSource;
+    public Material Blur;
+    
+    public static float EFM_value = 1;
     // Start is called before the first frame update
     void Start()
     {
+        Blur.SetInt("_Radius",0);
+        Cursor.lockState = CursorLockMode.None;
         // mAudioSource 초기화
         mAudioSource = this.GetComponent<AudioSource>();
         var objs = FindObjectsOfType<SoundPlayer>();

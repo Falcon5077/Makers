@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3441667458826997438
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3441667458826997436}
+  - component: {fileID: 3441667458826997437}
+  - component: {fileID: 3441667458826997435}
+  m_Layer: 0
+  m_Name: End1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3441667458826997436
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3441667458826997438}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3441667458826997437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3441667458826997438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 558766f6739ee4e91b82f599203e6507, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chatStart: 1
+  names:
+  - 135246
+  - 
+  contents:
+  - "0\uD5C9.. \uD5C9.."
+  - "0\uC870\uAE08\uB9CC \uB354.. \uAC00\uBA74.."
+  - "0\uCD9C\uAD6C\uC778\uB370.. \uBAB8\uC774 \uC548 \uC6C0\uC9C1\u3147.."
+  - "1(\uCCA0\uCEE5)"
+  endRoutine: FirstEnding
+--- !u!114 &3441667458826997435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3441667458826997438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a230ea71aa93e3140b63d7b0494071be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Enemy: {fileID: 0}
+  Door: {fileID: 0}
+  Ending_1: {fileID: 0}
+  Ending_2: {fileID: 2248892643468345632, guid: 24684ff328ef04d47bb1636a1bca5429, type: 3}
+  SpawnDoor: 0

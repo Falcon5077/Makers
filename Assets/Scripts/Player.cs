@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 //using System;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour{
     // static으로 선언된 player
@@ -39,6 +40,8 @@ public class Player : MonoBehaviour{
     public List<GameObject> HP_List;
     public GameObject HP_point;
     public Transform HP_Head;
+
+    public AudioSource shootSound;
 
     // bullet power
     [SerializeField] int bulletPower = 1;
@@ -99,7 +102,10 @@ public class Player : MonoBehaviour{
             anim.SetBool("isSideWalk", true);
         }
         if (checkDirectionBool(Direction.Left)){
-            playerSprite.flipX = true;
+            Scene scene = SceneManager.GetActiveScene();
+            if(scene.name != "Game 2"){
+                playerSprite.flipX = true;
+            }
             anim.SetBool("isSideWalk", true);
         }
 
@@ -176,6 +182,9 @@ public class Player : MonoBehaviour{
             player = this;
         }
 
+        if(GetComponent<AudioSource>() != null) 
+            GetComponent<AudioSource>().volume = SoundPlayer.EFM_value;
+        
         SetHpUI();
         playerSprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
@@ -208,6 +217,8 @@ public class Player : MonoBehaviour{
             Destroy(HP_List[i]);
         }
 
+        HP_List.Clear();
+
         for(int i = 0; i < mHpSystem.m_HP; i++)
         {
             HP_List.Add(Instantiate(HP_point,HP_Head));
@@ -228,6 +239,9 @@ public class Player : MonoBehaviour{
     private void OnTriggerEnter2D(Collider2D collision) {   //Enemy의 Circle Collison내에 Player가 들어오게 되면 follow = false로 세팅
         if(collision.tag == "monster")
         {
+            if(GetComponent<AudioSource>() != null)
+                GetComponent<AudioSource>().Play();
+
             int p = collision.gameObject.GetComponent<Monster>().power;
 
             if(mHpSystem.CalcHP(-p) <= 0)
@@ -245,6 +259,9 @@ public class Player : MonoBehaviour{
         }        
         
         if (collision.tag == "enemyBullet") {
+            if(GetComponent<AudioSource>() != null)
+                GetComponent<AudioSource>().Play();
+
             int p = collision.gameObject.GetComponent<Bullet>().bulletPower;
 
             if(mHpSystem.CalcHP(-p) <= 0)
@@ -295,7 +312,9 @@ public class Player : MonoBehaviour{
         //추가된 내용
         if (collision.tag == "NextScene")
         {
-            collision.GetComponent<SceneChanger>().ChangeNextScene();
+            Destroy(collision.gameObject);
+            GameObject SC = GameObject.Find("SceneChanger");
+            SC.GetComponent<SceneChanger>().ChangeNextScene(collision.GetComponent<nextSceneName>().NextName);
         }
 
         SetHpUI();

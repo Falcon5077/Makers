@@ -17,7 +17,8 @@ public class Bullet : MonoBehaviour{
 
     // 초기화 
     void Awake(){
-
+        if(GetComponent<AudioSource>() != null) 
+            GetComponent<AudioSource>().volume = SoundPlayer.EFM_value;
     }
 
     // Start is called before the first frame update

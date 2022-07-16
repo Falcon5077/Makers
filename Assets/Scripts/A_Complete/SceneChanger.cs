@@ -26,7 +26,12 @@ public class SceneChanger : MonoBehaviour
 
     private void Start() {
         // 다른 씬에서 사용될 수 있게 DontDestroy
-        DontDestroyOnLoad(this.gameObject);
+        var objs = FindObjectsOfType<SceneChanger>();
+        if(objs.Length == 1)
+        // 다른 씬에서 사용될 수 있게 DontDestroy
+            DontDestroyOnLoad(this.gameObject);
+        else
+            Destroy(gameObject);
     }
 }
 
